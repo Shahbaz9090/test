@@ -1,0 +1,107 @@
+@media only screen and (max-width: 1024px) {
+.footer-widget-nav li { margin-bottom: 5px; background: #4C4C4C; border-left: 3px solid #6B6666; padding: 5px; }
+}
+
+
+@media only screen and (max-width: 800px) {
+	
+
+}
+
+@media only screen and (max-width: 768px) {
+.footer-widget-nav li { margin-bottom: 5px; background: #4C4C4C; border-left: 3px solid #6B6666; padding: 5px; }
+.textwidget p{text-align:justify;}	
+.widget-title { color: #919191; margin: 15px 0 15px 0; text-align: left; background: #2F2F2F; padding: 9px; }
+.footer-credits { font-size: 14px; color: #868686; padding: 10px 0 15px; margin: 0; background: url(../../images/border-gradient.png) no-repeat; background-position: center top; background-size: 100%; }
+.right-bx{width:100%;}
+.left-bx{float:none;}
+#skillset {height: auto;}
+.margin-form-1 label{margin-bottom:15px;}
+.margin-form-1 {margin:0px 0 10px; float: left; }
+.select-country { margin: 8px 10px 5px; }
+.left-homebg { background: url("../images/home-left-bg.png") no-repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0); float: left; height: 425px; margin-top: 20px; width: 277px;font-size:17px;  }
+.counter-container p { font-size: 14px; }
+.form-control-1 { display: block; width: 100%; height: 40px; padding: 6px 12px; font-size: 14px; line-height: 1.42857143; color: #555; background-color: #fff; background-image: none; border: 1px solid #EEE; border-left: 1px solid #EDEDED; }
+.form-group-new { width: 526px; height: 40px; float: left; }
+.form-group-new-text-area { width: 569px; height: auto; float: left; }
+.btn-boxs { width: 100%; height: auto; float: left; margin: 10px 0 0 0; text-align: center; background: #F7F7F7; }
+.btn-right{display:inline-block; float:none;}
+.form-right { padding-left: 0; margin:10px 0 10px 10px; height:auto; background-image: url(../images/line-center.png); background-repeat: no-repeat; background-position: 0 -81px; float: left; width: 100%; }
+.menu li a { background: #fff; color: #565656; border-top: 1px solid #e0e0e0; border-left: none; padding: 3px 0px; }
+}
+
+
+@media only screen and (max-width: 640px) {
+.left-homebg { background: url("../images/erookie-left.png") no-repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0); float: left; height: 425px;padding:0 2%; width:86%; margin:20px 5% 10px 8%;}
+.left-homebg .heading { color: #fff; font-size: 20px; font-weight: bold; margin: 15px 0 25px; }	
+.form-group-new { width: 527px; height: 40px; float: left; }
+.form-group-new-text-area { width: 570px; height: auto; float: left;}	
+}
+
+@media only screen and (max-width: 601px) {
+.form-group-new { width: 508px; height: 40px; float: left; }
+.form-group-new-text-area { width: 550px; height: auto; float: left; }		
+}
+
+@media only screen and (max-width: 568px) {
+.form-group-new { width: 478px; height: 40px; float: left; }
+.form-group-new-text-area { width: 520px; height: auto; float: left; }		
+}
+
+@media only screen and (max-width: 480px) {
+.left-homebg { background: url("../images/erookie-left.png") no-repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0); float: left; height: 425px; padding: 0 2%; width: 96%; margin: 20px 0% 10px 3%; }
+.left-homebg .heading { font-size: 16px; }
+.job-status { min-height:170px;}
+.counter-container p { font-size: 8px; }
+.counter-value { font-size: 14px; padding: 4px 0; }
+.counter { margin: 8px auto 0 auto; }
+.job-status h4 { font-size: 22px; margin: 23px 0 13px 0; }
+.form-group-new { width: 383px; height: 40px; float: left; }
+.form-group-new-text-area { width: 425px; height: auto; float: left; }
+
+}
+
+@media only screen and (max-width:414px) {
+.form-group-new { width: 323px; height: 40px; float: left; }
+.form-group-new-text-area { width: 366px; height: auto; float: left; }
+	
+}
+
+
+@media only screen and (max-width: 384px) {
+.form-group-new { width: 294px; height: 40px; float: left; }
+.form-group-new-text-area { width: 336px; height: auto; float: left; }
+	
+}
+@media only screen and (max-width: 376px) {
+.form-group-new { width: 284px; height: 40px; float: left; }
+.form-group-new-text-area { width: 327px; height: auto; float: left; }
+	
+}
+
+@media only screen and (max-width: 360px) {
+.form-group-new { width: 284px; height: 40px; float: left; }
+.form-group-new-text-area { width: 327px; height: auto; float: left; }
+	
+}
+@media only screen and (max-width: 320px) {	
+.left-homebg { background: url("../images/erookie-left.png") no-repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0); float: left; height: 425px; padding: 0 2%; width: 100%; margin: 20px 0% 10px; }
+.left-homebg .heading { font-size: 13px;}	
+.counter-container p { font-size: 14px; }
+.counter-value { font-size: 18px; padding: 4px 0; }
+.side-box-1 ul { padding: 0 0 0 22px; }
+.side-box-1 ul li { padding-left: 0px; }
+.form-group-new { width: 244px; height: 40px; float: left;}
+.form-group-new-text-area { width: 286px; height: auto; float: left;}
+}
+
+
+@media only screen and (max-width: 320px) {
+.form-group-new { width:229px; height: 40px; float: left;}
+.form-group-new-text-area { width: 272px; height: auto; float: left;}
+}
+
+@media only screen and (max-width: 240px) {
+.form-group-new { width:149px; height: 40px; float: left;}
+.form-group-new-text-area { width: 192px; height: auto; float: left;}
+}

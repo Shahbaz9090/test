@@ -1,0 +1,305 @@
+  <script type="text/javascript">
+        jQuery(document).ready(function($) 
+        {
+        $("#company_form").validate();
+		   $("#hot_contact_row").slideToggle();
+          
+           $('#assign_group').change(function()
+             {
+			
+                var group_id =$(this).val();
+				
+                $.get('<?=base_url("user_group")?>/ajax_user/'+group_id, function(data) 
+                {
+                  $('#assign_user').html(data);                  
+                });
+            });
+           
+		
+           
+           
+            $('#is_ajax_email').keyup(function()
+            {
+                var email = $(this).val();
+                if(isValidEmailAddress(email)) 
+                {  
+                       $.ajax(
+                       {
+                           type: "POST",
+                           url: '<?=$base_url?>/ajax_is_email',
+                           data: {email: email},
+                           success: function(data)
+                           {                         
+                                if(data == "yes")
+                                    $("#email_status").html("This Email-id already registerd!").show();
+                                else
+                                  $("#email_status").hide();
+                           },                      
+                       });
+        
+                 }
+                 else
+                 {
+                    $("#email_status").html("This Email-id does not valid!").show();
+                 }
+                        
+            });
+			
+			
+           
+  
+        });
+    </script>
+    
+<script src="<?=PUBLIC_URL?>js/jquery-1.9.1.js" type="text/javascript"></script>
+  <link rel="stylesheet" type="text/css" href="<?=PUBLIC_URL?>css/jquery-ui.css" media="screen" />
+  <script src="<?=PUBLIC_URL?>js/jquery-ui.js" type="text/javascript"></script>
+  <script>
+  jQuery(document).ready(function ($) {
+		var availableTags = [
+          <?php foreach($countries as $row):?>
+            "<?=$row->country_name?>",
+         <?php endforeach; ?>		
+		];
+		$( "#country" ).autocomplete({ 
+			source: availableTags,
+			select: function(event, ui) {
+
+              
+				var c = ui.item.value;
+         	
+                $.get('<?=base_url("country")?>/ajax_state/'+c, function(data) 
+                {
+                  $('#state').html(data);                  
+                });
+			}
+		});
+	});
+</script>
+  
+    
+   
+    
+    
+    
+    
+  <div class="grid_10">
+            <div class="box round first">  
+                <h2><?=lang($action."_title");?></h2>
+                
+                <div class="block ">
+                
+                <?php echo get_flashdata();?>
+                
+                    <?php echo form_open_multipart(current_url(),array('id'=>'company_form')); ?>
+                    
+                     <div id="formbase">
+                        <div class="form">
+                        
+                        
+                    <div class="formrow">
+                    
+                        <div class="col1"><?=lang('email')?><em>*</em></div>
+                        <div class="col5">
+                            <input type="text" id="is_ajax_email" class="small_medium required email" name="email" value="<?=isset($result->email_id)?$result->email_id:'';?>" <?php  if(isset($result->email_id)){ echo 'readonly="true"';} ?> />
+                            <label for="is_ajax_email" class="error" id="email_status" style="display: none;">This email id already registered!</label>
+                        </div>
+                    
+                    
+                        <div class="col1"><?=lang('name')?><em>*</em></div>
+                        <div class="col5">
+                            <input type="text" class="small_medium required" name="name" value="<?=isset($result->name)?$result->name:'';?>" <?=$readonly?>/>
+                        </div>
+                    
+                    </div>  
+                        
+                        
+                        
+                        
+                    <div class="formrow">
+                    
+                        <div class="col1"><?=lang('company_name')?><em>*</em></div>
+                        <div class="col5">
+                            <input type="text" class="small_medium required" name="company_name" value="<?=isset($result->company_name)?$result->company_name:'';?>" <?=$readonly?>/>
+                        </div>
+                        
+                        <div class="col1"><?=lang('company_website')?><em>*</em></div>
+                        <div class="col5">
+                            <input type="text" name="company_website" value="<?=isset($result->company_website)?$result->company_website:'http://www.';?>" class="small_medium required url" <?php  if(isset($result->company_website)){ echo 'readonly="true"';} ?> />
+                        </div>     
+                    
+                    </div>
+                    
+                    
+                    
+                    <div class="formrow">
+                    
+                        <div class="col1"><?=lang('primary_phone')?><em>*</em></div>
+                        <div class="col5">
+                            <input type="text" class="small_medium required number" name="p_phone" minlength="10" maxlength="10" value="<?=isset($result->primary_phone)?$result->primary_phone:'';?>"  <?=$readonly?>/>
+                        </div>
+                    
+                        <div class="col1"><?=lang('secondary_phone')?></div>
+                        <div class="col5">
+                            <input type="text" class="small_medium" name="s_phone" minlength="10" maxlength="10" value="<?=isset($result->secondary_phone)?$result->secondary_phone:'';?>" <?=$readonly?>/>
+                        </div>
+                    
+                    </div>
+                    
+                    
+                    <div class="formrow">
+                    
+                        <div class="col1"><?=lang('fax_number')?></div>
+                        <div class="col5">
+                            <input type="text" class="small_medium" name="fax_number" value="<?=isset($result->fax_num)?$result->fax_num:'';?>" <?=$readonly?>/>
+                        </div>
+                    
+                        <div class="col1"><?=lang('address')?></div>
+                        <div class="col5">
+                            <textarea name="address" <?php if(isset($readonly)){ echo "disabled='true'";} ?> ><?=isset($result->address)?$result->address:'';?></textarea>
+                        </div>
+                    
+                    </div>
+                  
+                    
+                    <div class="formrow">
+                    
+                        <div class="col1"><?=lang('country')?><em>*</em></div>
+                        <div class="col5 ui-widget">
+	                      <input name="country" type="text" class="small_medium wickEnabled required" id="country" value="<?=isset($result->country_name)?$result->country_name:'';?>" <?=$readonly?>/>	                     
+	                    </div>
+                        
+                        <div class="col1"><?=lang('state')?></div>
+                            <div class="col5">
+                                <select name="state" id="state" class="required" <?php if(isset($readonly)){ echo "disabled='true'";} ?>>
+                                  <option value="">Select State</option>
+                                    <?php foreach($state as $state_row):?>
+                                    <option value="<?=$state_row->id?>" <?php  if(isset($result->state) && $result->state == $state_row->id){ echo "selected" ;}?> ><?=$state_row->name?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                           </div>
+                        
+                    </div>
+                    
+                    
+                    
+                    <div class="formrow">
+                    
+                        <div class="col1"><?=lang('city')?></div>
+                        <div class="col5">
+                            <input type="text" class="small_medium" name="city" value="<?=isset($result->city)?$result->city:'';?>" <?=$readonly?>/>
+                        </div>
+                        
+                        <div class="col1"><?=lang('postal_code')?></div>
+                        <div class="col5">
+                            <input type="text" class="small_medium" name="postal_code" value="<?=isset($result->postal_code)?$result->postal_code:'';?>" <?=$readonly?>/>
+                        </div>
+                    
+                    </div>
+                    
+                    
+                    
+                    <div class="formrow">
+                    
+                        <div class="col1"><?=lang('key_technology')?></div>
+                        <div class="col5">
+                            <input type="text" class="small_medium" name="key_technology" value="<?=isset($result->key_technologies)?$result->key_technologies:'';?>" <?=$readonly?>/>
+                        </div>
+                        
+                        <div class="col1"><?=lang('hot_contact')?></div>
+                        <div class="col5">
+                            <input type="checkbox"  name="hot_contact" id="hot_contact" value="1" <?php if(isset($result->hot_contact) && $result->hot_contact == 1){echo "checked"; } ?> <?php if(isset($readonly)){ echo "disabled='true'";} ?>/>
+                        </div>
+                    
+                    </div>
+                    
+                    
+                    <div class="formrow">
+                    
+                    
+                    
+                    <div class="col1"><?=lang('notes')?></div>
+                    <div class="col5">
+                        <textarea name="notes" <?php if(isset($readonly)){ echo "disabled='true'";} ?> ><?=isset($result->notes)?$result->notes:'';?></textarea>
+                    </div>
+                    
+                    <div id="hot_contact_row" <?php  if(!isset($result->hot_contact)) { echo 'style="display: none;"'; }?> >
+                    <div class="col1"><?=lang('hot_contact_comment')?></div>
+                    <div class="col5">
+                    <textarea name="hot_contact_comment" <?php if(isset($readonly)){ echo "disabled='true'";} ?> ><?=isset($result->hot_contact_comment)?$result->hot_contact_comment:'';?></textarea>
+                    </div>
+                    </div>
+                    
+                    </div>
+                    
+					
+					<div class="formrow">
+                    
+                        <div class="col1"><?=lang('assign_group')?><em>*</em></div>
+                         <div class="col5">
+                            <select name="assign_group" id="assign_group" class="small_medium" <?php if($readonly != NULL)echo 'disabled="true"';?> >
+                            <option value=""><--Select Group--></option>
+                            <?php foreach($user_groups as $row):?>
+                            <option  value="<?=$row->id;?>" <?php if(isset($result->group_id) && $result->group_id ==$row->id){ echo "selected"; } ?> ><?=ucfirst($row->name)?> </option>
+                            <?php endforeach; ?>
+                            </select>
+                        </div>
+                        
+                        
+                      
+                        
+                        <div class="col1"><?=lang('assign_user')?><em>*</em></div>
+                         <div class="col5">
+                           
+							
+							
+								
+								
+								 <select name="assign_user" id="assign_user" class="small_medium"  <?php if($readonly != NULL)echo 'disabled="true"';?> >
+                                <option value="" >Select User</option>
+                                    <?php foreach($assign_user as $row):?>
+                                    <option value="<?=$row->id?>" <?php  if(isset($result->user_id) && $result->user_id == $row->id){ echo "selected" ;}?> ><?=$row->name?></option>
+                                    <?php endforeach; ?>                                            
+                            </select>
+							
+							
+                         </div>
+                      
+                       
+                    
+                     </div>
+               
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    <div class="formrow">
+                    <div style="margin-left:200px;">
+                    
+                    <?php if($action == 'view') { ?>
+                    <a href="<?=$base_url.'/edit/'.$result->id?>" class="btn btn-large btn-blue"><?=lang($action.'_button');?></a>    
+                    <?php } else { ?>
+                    <input type="submit" class="btn btn-large btn-blue" value="<?=lang($action.'_button');?>" name="submit"/>
+                    <?php } ?>
+                    
+                    
+                    <input type="reset" class="btn btn-large btn-red" value="<?=lang('reset');?>" name="reset"/>
+                    </div>
+                    </div>  
+                        
+                        </div>
+                     </div>
+                     
+                    <?php echo form_close(); ?>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+        

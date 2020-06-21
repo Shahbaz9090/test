@@ -1,0 +1,1020 @@
+8436overview
+Array
+(
+    [0] => stdClass Object
+        (
+            [subject] => Top-up Balance Alert for Jio Number 9670038997
+            [from] => Notification@jio.com
+            [to] => Pk836746@gmail.com
+            [date] => Thu, 12 Dec 2019 20:39:26 -0800 (PST)
+            [message_id] => <313750544.933173.1576211964492.JavaMail.mwapp@NVMBD2BKT10D00>
+            [size] => 3836
+            [uid] => 14297
+            [msgno] => 8436
+            [recent] => 0
+            [flagged] => 0
+            [answered] => 0
+            [deleted] => 0
+            [seen] => 1
+            [draft] => 0
+            [udate] => 1576211966
+        )
+
+)
+overview
+stdClass Object
+(
+    [date] => Thu, 12 Dec 2019 20:39:26 -0800 (PST)
+    [Date] => Thu, 12 Dec 2019 20:39:26 -0800 (PST)
+    [subject] => Top-up Balance Alert for Jio Number 9670038997
+    [Subject] => Top-up Balance Alert for Jio Number 9670038997
+    [message_id] => <313750544.933173.1576211964492.JavaMail.mwapp@NVMBD2BKT10D00>
+    [toaddress] => Pk836746@gmail.com
+    [to] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [mailbox] => Pk836746
+                    [host] => gmail.com
+                )
+
+        )
+
+    [fromaddress] => Notification@jio.com
+    [from] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [mailbox] => Notification
+                    [host] => jio.com
+                )
+
+        )
+
+    [reply_toaddress] => Notification@jio.com
+    [reply_to] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [mailbox] => Notification
+                    [host] => jio.com
+                )
+
+        )
+
+    [senderaddress] => Notification@jio.com
+    [sender] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [mailbox] => Notification
+                    [host] => jio.com
+                )
+
+        )
+
+    [Recent] =>  
+    [Unseen] =>  
+    [Flagged] =>  
+    [Answered] =>  
+    [Deleted] =>  
+    [Draft] =>  
+    [Msgno] => 8436
+    [MailDate] => 13-Dec-2019 04:39:26 +0000
+    [Size] => 3836
+    [udate] => 1576211966
+)
+structure
+stdClass Object
+(
+    [type] => 1
+    [encoding] => 0
+    [ifsubtype] => 1
+    [subtype] => MIXED
+    [ifdescription] => 0
+    [ifid] => 0
+    [ifdisposition] => 0
+    [ifdparameters] => 0
+    [ifparameters] => 1
+    [parameters] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [attribute] => BOUNDARY
+                    [value] => ----=_Part_933172_282379932.1576211964489
+                )
+
+        )
+
+    [parts] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [type] => 0
+                    [encoding] => 0
+                    [ifsubtype] => 1
+                    [subtype] => HTML
+                    [ifdescription] => 0
+                    [ifid] => 0
+                    [lines] => 9
+                    [bytes] => 417
+                    [ifdisposition] => 0
+                    [ifdparameters] => 0
+                    [ifparameters] => 1
+                    [parameters] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [attribute] => CHARSET
+                                    [value] => utf-8
+                                )
+
+                        )
+
+                )
+
+        )
+
+)
+8437overview
+Array
+(
+    [0] => stdClass Object
+        (
+            [subject] => Shipgig Ventures Private ltd. is hiring for PHP Developer. Apply Now.
+            [from] => Glassdoor Jobs 
+            [to] => pk836746@gmail.com
+            [date] => Fri, 13 Dec 2019 06:16:46 +0000 (UTC)
+            [message_id] => 
+            [size] => 46401
+            [uid] => 14298
+            [msgno] => 8437
+            [recent] => 0
+            [flagged] => 0
+            [answered] => 0
+            [deleted] => 0
+            [seen] => 0
+            [draft] => 0
+            [udate] => 1576217807
+        )
+
+)
+overview
+stdClass Object
+(
+    [date] => Fri, 13 Dec 2019 06:16:46 +0000 (UTC)
+    [Date] => Fri, 13 Dec 2019 06:16:46 +0000 (UTC)
+    [subject] => Shipgig Ventures Private ltd. is hiring for PHP Developer. Apply Now.
+    [Subject] => Shipgig Ventures Private ltd. is hiring for PHP Developer. Apply Now.
+    [message_id] => 
+    [toaddress] => pk836746@gmail.com
+    [to] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [mailbox] => pk836746
+                    [host] => gmail.com
+                )
+
+        )
+
+    [fromaddress] => Glassdoor Jobs 
+    [from] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [personal] => Glassdoor Jobs
+                    [mailbox] => noreply
+                    [host] => glassdoor.com
+                )
+
+        )
+
+    [reply_toaddress] => Glassdoor Jobs 
+    [reply_to] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [personal] => Glassdoor Jobs
+                    [mailbox] => noreply
+                    [host] => glassdoor.com
+                )
+
+        )
+
+    [senderaddress] => Glassdoor Jobs 
+    [sender] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [personal] => Glassdoor Jobs
+                    [mailbox] => noreply
+                    [host] => glassdoor.com
+                )
+
+        )
+
+    [Recent] =>  
+    [Unseen] => U
+    [Flagged] =>  
+    [Answered] =>  
+    [Deleted] =>  
+    [Draft] =>  
+    [Msgno] => 8437
+    [MailDate] => 13-Dec-2019 06:16:47 +0000
+    [Size] => 46401
+    [udate] => 1576217807
+)
+structure
+stdClass Object
+(
+    [type] => 1
+    [encoding] => 0
+    [ifsubtype] => 1
+    [subtype] => ALTERNATIVE
+    [ifdescription] => 0
+    [ifid] => 0
+    [ifdisposition] => 0
+    [ifdparameters] => 0
+    [ifparameters] => 1
+    [parameters] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [attribute] => BOUNDARY
+                    [value] => b5db6d6204c7e827ad99a925d44d575b8888d0fc7ca4b9cb7829052c80a9
+                )
+
+        )
+
+    [parts] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [type] => 0
+                    [encoding] => 4
+                    [ifsubtype] => 1
+                    [subtype] => PLAIN
+                    [ifdescription] => 0
+                    [ifid] => 0
+                    [lines] => 7
+                    [bytes] => 305
+                    [ifdisposition] => 0
+                    [ifdparameters] => 0
+                    [ifparameters] => 1
+                    [parameters] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [attribute] => CHARSET
+                                    [value] => UTF-8
+                                )
+
+                        )
+
+                )
+
+            [1] => stdClass Object
+                (
+                    [type] => 0
+                    [encoding] => 4
+                    [ifsubtype] => 1
+                    [subtype] => HTML
+                    [ifdescription] => 0
+                    [ifid] => 0
+                    [lines] => 809
+                    [bytes] => 40449
+                    [ifdisposition] => 0
+                    [ifdparameters] => 0
+                    [ifparameters] => 1
+                    [parameters] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [attribute] => CHARSET
+                                    [value] => UTF-8
+                                )
+
+                        )
+
+                )
+
+        )
+
+)
+8438overview
+Array
+(
+    [0] => stdClass Object
+        (
+            [subject] => Security alert
+            [from] => Google 
+            [to] => pk836746@gmail.com
+            [date] => Fri, 13 Dec 2019 06:46:37 +0000 (GMT)
+            [message_id] => <-MUfRkSwaKbKobq0ixieTw.0@notifications.google.com>
+            [size] => 11122
+            [uid] => 14299
+            [msgno] => 8438
+            [recent] => 0
+            [flagged] => 0
+            [answered] => 0
+            [deleted] => 0
+            [seen] => 1
+            [draft] => 0
+            [udate] => 1576219598
+        )
+
+)
+overview
+stdClass Object
+(
+    [date] => Fri, 13 Dec 2019 06:46:37 +0000 (GMT)
+    [Date] => Fri, 13 Dec 2019 06:46:37 +0000 (GMT)
+    [subject] => Security alert
+    [Subject] => Security alert
+    [message_id] => <-MUfRkSwaKbKobq0ixieTw.0@notifications.google.com>
+    [toaddress] => pk836746@gmail.com
+    [to] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [mailbox] => pk836746
+                    [host] => gmail.com
+                )
+
+        )
+
+    [fromaddress] => Google 
+    [from] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [personal] => Google
+                    [mailbox] => no-reply
+                    [host] => accounts.google.com
+                )
+
+        )
+
+    [reply_toaddress] => Google 
+    [reply_to] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [personal] => Google
+                    [mailbox] => no-reply
+                    [host] => accounts.google.com
+                )
+
+        )
+
+    [senderaddress] => Google 
+    [sender] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [personal] => Google
+                    [mailbox] => no-reply
+                    [host] => accounts.google.com
+                )
+
+        )
+
+    [Recent] =>  
+    [Unseen] =>  
+    [Flagged] =>  
+    [Answered] =>  
+    [Deleted] =>  
+    [Draft] =>  
+    [Msgno] => 8438
+    [MailDate] => 13-Dec-2019 06:46:38 +0000
+    [Size] => 11122
+    [udate] => 1576219598
+)
+structure
+stdClass Object
+(
+    [type] => 1
+    [encoding] => 0
+    [ifsubtype] => 1
+    [subtype] => ALTERNATIVE
+    [ifdescription] => 0
+    [ifid] => 0
+    [ifdisposition] => 0
+    [ifdparameters] => 0
+    [ifparameters] => 1
+    [parameters] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [attribute] => BOUNDARY
+                    [value] => 0000000000003a484f0599903906
+                )
+
+        )
+
+    [parts] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [type] => 0
+                    [encoding] => 3
+                    [ifsubtype] => 1
+                    [subtype] => PLAIN
+                    [ifdescription] => 0
+                    [ifid] => 0
+                    [lines] => 16
+                    [bytes] => 774
+                    [ifdisposition] => 0
+                    [ifdparameters] => 0
+                    [ifparameters] => 1
+                    [parameters] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [attribute] => CHARSET
+                                    [value] => UTF-8
+                                )
+
+                            [1] => stdClass Object
+                                (
+                                    [attribute] => DELSP
+                                    [value] => yes
+                                )
+
+                            [2] => stdClass Object
+                                (
+                                    [attribute] => FORMAT
+                                    [value] => flowed
+                                )
+
+                        )
+
+                )
+
+            [1] => stdClass Object
+                (
+                    [type] => 0
+                    [encoding] => 4
+                    [ifsubtype] => 1
+                    [subtype] => HTML
+                    [ifdescription] => 0
+                    [ifid] => 0
+                    [lines] => 101
+                    [bytes] => 5032
+                    [ifdisposition] => 0
+                    [ifdparameters] => 0
+                    [ifparameters] => 1
+                    [parameters] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [attribute] => CHARSET
+                                    [value] => UTF-8
+                                )
+
+                        )
+
+                )
+
+        )
+
+)
+8439overview
+Array
+(
+    [0] => stdClass Object
+        (
+            [subject] => Pradeep, create a post for people visiting "Pradeep Developer"
+            [from] => Facebook Business 
+            [to] => Pradeep Kumar 
+            [date] => Thu, 12 Dec 2019 23:46:14 -0800
+            [message_id] => <99654d4c1cd299403a1f48d7a2cb8d1e@2d4a6334d2f2bb73c1c106ccaf5b5e83c5a47abe274260dadc6a33286199d452>
+            [size] => 10544
+            [uid] => 14300
+            [msgno] => 8439
+            [recent] => 0
+            [flagged] => 0
+            [answered] => 0
+            [deleted] => 0
+            [seen] => 1
+            [draft] => 0
+            [udate] => 1576223175
+        )
+
+)
+overview
+stdClass Object
+(
+    [date] => Thu, 12 Dec 2019 23:46:14 -0800
+    [Date] => Thu, 12 Dec 2019 23:46:14 -0800
+    [subject] => Pradeep, create a post for people visiting "Pradeep Developer"
+    [Subject] => Pradeep, create a post for people visiting "Pradeep Developer"
+    [message_id] => <99654d4c1cd299403a1f48d7a2cb8d1e@2d4a6334d2f2bb73c1c106ccaf5b5e83c5a47abe274260dadc6a33286199d452>
+    [toaddress] => Pradeep Kumar 
+    [to] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [personal] => Pradeep Kumar
+                    [mailbox] => pk836746
+                    [host] => gmail.com
+                )
+
+        )
+
+    [fromaddress] => Facebook Business 
+    [from] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [personal] => Facebook Business
+                    [mailbox] => advertise-noreply
+                    [host] => support.facebook.com
+                )
+
+        )
+
+    [reply_toaddress] => noreply 
+    [reply_to] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [personal] => noreply
+                    [mailbox] => noreply
+                    [host] => facebookmail.com
+                )
+
+        )
+
+    [senderaddress] => Facebook Business 
+    [sender] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [personal] => Facebook Business
+                    [mailbox] => advertise-noreply
+                    [host] => support.facebook.com
+                )
+
+        )
+
+    [Recent] =>  
+    [Unseen] =>  
+    [Flagged] =>  
+    [Answered] =>  
+    [Deleted] =>  
+    [Draft] =>  
+    [Msgno] => 8439
+    [MailDate] => 13-Dec-2019 07:46:15 +0000
+    [Size] => 10544
+    [udate] => 1576223175
+)
+structure
+stdClass Object
+(
+    [type] => 0
+    [encoding] => 4
+    [ifsubtype] => 1
+    [subtype] => HTML
+    [ifdescription] => 0
+    [ifid] => 0
+    [lines] => 117
+    [bytes] => 5834
+    [ifdisposition] => 0
+    [ifdparameters] => 0
+    [ifparameters] => 1
+    [parameters] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [attribute] => CHARSET
+                    [value] => UTF-8
+                )
+
+        )
+
+)
+content
+They haven't heard from you in a while =
+3D"Header"		Facebook = Ads
+Hi Pradeep,
+
+People = visiting Pradeep Developer haven't heard from you in a = while. Write a post or share a photo or video to keep people engaged. Learn more
+
+= Thanks,
+The Facebook Ads Team
+
+Create Post
+This = email was sent to pk836746@gmail.com. = You can unsubscribe or learn more about = advertising.
+Facebook, Inc., Attention: Community Support, 1 Facebook = Way, Menlo Park, CA 94025
+
+
+#########################################################################################
+overview
+Array
+(
+    [0] => stdClass Object
+        (
+            [subject] => qq...@
+            [from] => "Offer.2017" 
+            [date] => Thu, 2 Nov 2017 05:12:59 +0530
+            [message_id] => 
+            [size] => 1733238
+            [uid] => 4882
+            [msgno] => 869
+            [recent] => 0
+            [flagged] => 0
+            [answered] => 0
+            [deleted] => 0
+            [seen] => 0
+            [draft] => 0
+            [udate] => 1509579781
+        )
+
+)
+header_info
+stdClass Object
+(
+    [date] => Thu, 2 Nov 2017 05:12:59 +0530
+    [Date] => Thu, 2 Nov 2017 05:12:59 +0530
+    [subject] => qq...@
+    [Subject] => qq...@
+    [message_id] => 
+    [fromaddress] => "Offer.2017" 
+    [from] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [personal] => Offer.2017
+                    [mailbox] => parshvi.vakil.bd14
+                    [host] => cept.ac.in
+                )
+
+        )
+
+    [bccaddress] => pk836746@gmail.com
+    [bcc] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [mailbox] => pk836746
+                    [host] => gmail.com
+                )
+
+        )
+
+    [reply_toaddress] => "Offer.2017" 
+    [reply_to] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [personal] => Offer.2017
+                    [mailbox] => parshvi.vakil.bd14
+                    [host] => cept.ac.in
+                )
+
+        )
+
+    [senderaddress] => "Offer.2017" 
+    [sender] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [personal] => Offer.2017
+                    [mailbox] => parshvi.vakil.bd14
+                    [host] => cept.ac.in
+                )
+
+        )
+
+    [Recent] =>  
+    [Unseen] => U
+    [Flagged] =>  
+    [Answered] =>  
+    [Deleted] =>  
+    [Draft] =>  
+    [Msgno] =>  869
+    [MailDate] =>  1-Nov-2017 23:43:01 +0000
+    [Size] => 1733238
+    [udate] => 1509579781
+)
+structure
+stdClass Object
+(
+    [type] => 1
+    [encoding] => 0
+    [ifsubtype] => 1
+    [subtype] => MIXED
+    [ifdescription] => 0
+    [ifid] => 0
+    [ifdisposition] => 0
+    [ifdparameters] => 0
+    [ifparameters] => 1
+    [parameters] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [attribute] => BOUNDARY
+                    [value] => 94eb2c0943ee96fc85055cf46e31
+                )
+
+        )
+
+    [parts] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [type] => 1
+                    [encoding] => 0
+                    [ifsubtype] => 1
+                    [subtype] => ALTERNATIVE
+                    [ifdescription] => 0
+                    [ifid] => 0
+                    [ifdisposition] => 0
+                    [ifdparameters] => 0
+                    [ifparameters] => 1
+                    [parameters] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [attribute] => BOUNDARY
+                                    [value] => 94eb2c0943ee96fc80055cf46e2f
+                                )
+
+                        )
+
+                    [parts] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [type] => 0
+                                    [encoding] => 0
+                                    [ifsubtype] => 1
+                                    [subtype] => PLAIN
+                                    [ifdescription] => 0
+                                    [ifid] => 0
+                                    [lines] => 9
+                                    [bytes] => 449
+                                    [ifdisposition] => 0
+                                    [ifdparameters] => 0
+                                    [ifparameters] => 1
+                                    [parameters] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [attribute] => CHARSET
+                                                    [value] => UTF-8
+                                                )
+
+                                        )
+
+                                )
+
+                            [1] => stdClass Object
+                                (
+                                    [type] => 0
+                                    [encoding] => 4
+                                    [ifsubtype] => 1
+                                    [subtype] => HTML
+                                    [ifdescription] => 0
+                                    [ifid] => 0
+                                    [lines] => 9
+                                    [bytes] => 560
+                                    [ifdisposition] => 0
+                                    [ifdparameters] => 0
+                                    [ifparameters] => 1
+                                    [parameters] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [attribute] => CHARSET
+                                                    [value] => UTF-8
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [1] => stdClass Object
+                (
+                    [type] => 3
+                    [encoding] => 3
+                    [ifsubtype] => 1
+                    [subtype] => VND.OPENXMLFORMATS-OFFICEDOCUMENT.WORDPROCESSINGML.DOCUMENT
+                    [ifdescription] => 0
+                    [ifid] => 0
+                    [bytes] => 1726956
+                    [ifdisposition] => 1
+                    [disposition] => ATTACHMENT
+                    [ifdparameters] => 1
+                    [dparameters] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [attribute] => FILENAME
+                                    [value] => ...df....docx
+                                )
+
+                        )
+
+                    [ifparameters] => 1
+                    [parameters] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [attribute] => NAME
+                                    [value] => ...df....docx
+                                )
+
+                        )
+
+                )
+
+        )
+
+)
+A Database Error Occurred
+Error Number: 1048
+
+Column 'to' cannot be null
+
+INSERT INTO `email_data` (`user_id`, `mail_id`, `from`, `to`, `subject`, `cc_email`, `message`, `recived_message`, `uid`, `last_sync_date`, `last_sync`, `msg_type`) VALUES ('1', 869, 'parshvi.vakil.bd14@cept.ac.in', NULL, 'qq...@', 'N;', '
+
+
+\r\n\r\n
+\r\nDisclaimer : The information transmitted with this email is intended only for the person or entity to which it is addressed and may contain confidential and/or privileged material. Any review, re-transmission, dissemination or other use of this information by persons or entities other than the intended recipient is prohibited. If you received this in error, please contact the sender and delete the material from any computer.', 0, 4882, 'Thu, 2 Nov 2017 05:12:59 +0530', '2019-12-13', 'inbox')
+Filename: E:\system\xampp\htdocs\inch-erp\system\database\DB_driver.php
+
+Line Number: 330
+
+overview
+Array
+(
+    [0] => stdClass Object
+        (
+            [subject] => Chandani chowk delhi
+            [from] => Pradeep Kumar 
+            [to] => pk836746@gmail.com
+            [date] => Sat, 14 Dec 2019 19:31:31 +0530
+            [message_id] => 
+            [size] => 4799
+            [uid] => 14312
+            [msgno] => 8450
+            [recent] => 0
+            [flagged] => 0
+            [answered] => 0
+            [deleted] => 0
+            [seen] => 1
+            [draft] => 0
+            [udate] => 1576332105
+        )
+
+)
+header_info
+stdClass Object
+(
+    [date] => Sat, 14 Dec 2019 19:31:31 +0530
+    [Date] => Sat, 14 Dec 2019 19:31:31 +0530
+    [subject] => Chandani chowk delhi
+    [Subject] => Chandani chowk delhi
+    [message_id] => 
+    [toaddress] => pk836746@gmail.com
+    [to] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [mailbox] => pk836746
+                    [host] => gmail.com
+                )
+
+        )
+
+    [fromaddress] => Pradeep Kumar 
+    [from] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [personal] => Pradeep Kumar
+                    [mailbox] => pradeepdev001
+                    [host] => gmail.com
+                )
+
+        )
+
+    [reply_toaddress] => Pradeep Kumar 
+    [reply_to] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [personal] => Pradeep Kumar
+                    [mailbox] => pradeepdev001
+                    [host] => gmail.com
+                )
+
+        )
+
+    [senderaddress] => Pradeep Kumar 
+    [sender] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [personal] => Pradeep Kumar
+                    [mailbox] => pradeepdev001
+                    [host] => gmail.com
+                )
+
+        )
+
+    [Recent] =>  
+    [Unseen] =>  
+    [Flagged] =>  
+    [Answered] =>  
+    [Deleted] =>  
+    [Draft] =>  
+    [Msgno] => 8450
+    [MailDate] => 14-Dec-2019 14:01:45 +0000
+    [Size] => 4799
+    [udate] => 1576332105
+)
+structure
+stdClass Object
+(
+    [type] => 1
+    [encoding] => 0
+    [ifsubtype] => 1
+    [subtype] => ALTERNATIVE
+    [ifdescription] => 0
+    [ifid] => 0
+    [ifdisposition] => 0
+    [ifdparameters] => 0
+    [ifparameters] => 1
+    [parameters] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [attribute] => BOUNDARY
+                    [value] => 0000000000002028700599aa6b32
+                )
+
+        )
+
+    [parts] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [type] => 0
+                    [encoding] => 0
+                    [ifsubtype] => 1
+                    [subtype] => PLAIN
+                    [ifdescription] => 0
+                    [ifid] => 0
+                    [lines] => 1
+                    [bytes] => 33
+                    [ifdisposition] => 0
+                    [ifdparameters] => 0
+                    [ifparameters] => 1
+                    [parameters] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [attribute] => CHARSET
+                                    [value] => UTF-8
+                                )
+
+                        )
+
+                )
+
+            [1] => stdClass Object
+                (
+                    [type] => 0
+                    [encoding] => 0
+                    [ifsubtype] => 1
+                    [subtype] => HTML
+                    [ifdescription] => 0
+                    [ifid] => 0
+                    [lines] => 2
+                    [bytes] => 75
+                    [ifdisposition] => 0
+                    [ifdparameters] => 0
+                    [ifparameters] => 1
+                    [parameters] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [attribute] => CHARSET
+                                    [value] => UTF-8
+                                )
+
+                        )
+
+                )
+
+        )
+
+)

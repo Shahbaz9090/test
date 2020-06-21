@@ -1,0 +1,140 @@
+@charset "utf-8";
+/* CSS Document */
+/*scrollbar width*/
+  
+  ::-webkit-scrollbar {
+      width: 6px;
+  }
+  ::-moz-scrollbar {
+      width: 6px;
+  }
+  ::-ms-scrollbar {
+      width: 6px;
+  }
+  ::-o-scrollbar {
+      width: 6px;
+  }
+  ::scrollbar {
+      width: 6px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+  }
+  ::-moz-scrollbar-track {
+      background: #f1f1f1; 
+  }
+  ::-ms-scrollbar-track {
+      background: #f1f1f1; 
+  }
+  ::-o-scrollbar-track {
+      background: #f1f1f1; 
+  }
+   ::scrollbar-track {
+      background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+      background: #c0c0c0; 
+  }
+  ::-moz-scrollbar-thumb {
+      background: #c0c0c0; 
+  }
+  ::-ms-scrollbar-thumb {
+      background: #c0c0c0; 
+  }
+  ::-o-scrollbar-thumb {
+      background: #c0c0c0; 
+  }
+  ::scrollbar-thumb {
+      background: #c0c0c0; 
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+      background: #555; 
+  }
+  ::-moz-scrollbar-thumb:hover {
+      background: #555; 
+  }
+  ::-ms-scrollbar-thumb:hover {
+      background: #555; 
+  }
+  ::-o-scrollbar-thumb:hover {
+      background: #555; 
+  }
+  ::scrollbar-thumb:hover {
+      background: #555; 
+  }
+  /*text selection color*/
+  ::selection
+  {
+    background-color:#e03333;
+    color: white;
+  }
+  ::-webkit-selection
+  {
+    background-color:#e03333;
+    color: white;
+  }
+  ::-o-selection
+  {
+    background-color:#e03333;
+    color: white;
+  }
+  ::-moz-selection
+  {
+    background-color:#e03333;
+    color: white;
+  }
+  ::-ms-selection
+  {
+    background-color:#e03333;
+    color: white;
+  }
+
+p{ font-size:12px; margin:5px;}
+pre{ margin:10px; color:#000;}
+.pre_img{ position:relative; top:3px; float:left;}
+pre a{ margin:10px; color:#000}
+p a{ text-decoration:none; color:#1569BC;} 
+#wrapper{ width:100%; margin:0px auto; height:auto;}
+.menubutton{ width:100%; margin:0px; height:auto; float:left; background:#f6f6f6; height:40px; margin-top:20px;}
+.menubutton ul{ margin:5px 0px 0px 0px; padding:0px; list-style:none; float:left;}
+.menubutton ul li{ margin:0px; padding:0px 10px; list-style:none; float:left;font-size:12px; font-weight:bold;}
+.menubutton ul li span img{ width:20px; height:20px;}
+.image_align{ position:relative; top:5px; left:-2px;}
+.commentshow{width:100px; float:right; margin-top:12px; height:20px; font-size:12px;}
+.commentshow a{ text-decoration:none; color:#06C;}
+.profilesumary{ width:99.5%; height:auto; float:left; border:1px solid #ccc; margin-top:20px;}
+
+.profilesumary_imagearea{ width:96%; height:100px; border-bottom:1px solid #ccc; float:left; background:#f9f9fb; padding:10px 2%;}
+.profilesumary_imagearea h5{ margin:5px 0px;}
+.profilesumary_imagearea img{  border: 1px solid #CCCCCC; float: right;height: 90px;margin-top: 0px;padding: 3px; width: 75px;}
+.grid_left{ float:left; width:60%;}
+.grid_right{ float:right; width:30%;}
+.grid_2left{ width:42%; float:left; min-height:140px; padding:10px 2%;}
+.contanttextlist{ margin:0px; padding:0px;}
+.contanttextlist ul{ margin:0px; padding:0px; list-style:none;}
+.contanttextlist ul li{ margin:0px; position:0px; list-style:none; font-size:12px; line-height:20px;}
+.grid_2right{ width:42%; float:right; min-height:140px; padding:10px 2%;}
+
+.activemenu{ margin:0px; padding:0px;}
+.activemenu ul{ margin:10px 0px; padding:0px; list-style:none; float:left;}
+.activemenu ul li{ margin:0px; padding:0px 30px 0px 0px; list-style:none; font-size:12px; float:left;}
+.activemenu ul li a{ text-decoration:none; color:#1569BC;}
+h3{ margin:10px 0px;clear:both;}
+
+.resume_title{ width:96%;  float:left; background:#f9f9fb;border-bottom:1px solid #ccc; padding:0 21px 0 11px;}	
+
+
+.hastag {
+	width: 100%;
+	height: auto;
+	text-align: left;
+font-size: 14px;
+	padding-top: 30px;
+	color: #868686;
+}

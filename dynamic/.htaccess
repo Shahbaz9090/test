@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteCond $1 !^(index\.php|assets|PayUMoney_PHP_Module|uploads|upload|frontend_assets)
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+

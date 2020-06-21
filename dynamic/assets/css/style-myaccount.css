@@ -1,0 +1,117 @@
+    .card .btn_div
+    {
+        line-height: 40px;
+        padding-right: 20px;
+        float: right;
+    }
+    .card .btn
+    {
+        height: 30px;
+        width: 100px;
+        line-height: 30px;
+        padding: 5px 5px; 
+        background:#1cbb9c;
+        color:white;
+        font-weight: 500;
+        text-align: center;
+       /* -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);*/
+        -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+        -moz-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+        -o-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+        -ms-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    }
+    .card {
+        background: #fff;
+        min-height: 50px;
+        box-shadow: 0 2px 10px rgba(0,0,0,.2);
+        position: relative;
+        margin-bottom: 30px;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        -ms-border-radius: 2px;
+        border-radius: 2px;
+    }
+    .card .header {
+        color: #555;
+        position: relative;
+        border-bottom: 1px solid rgba(204,204,204,.35);
+    }
+    .card .header p{
+        float: left;
+        padding: 0;
+        font-weight: 500px;
+        font-size: 18px;
+        line-height: 40px;
+        padding-left: 10px;
+        color: white;
+    }
+    .card .table-responsive {
+        min-height: .01%;
+        overflow-x: auto;
+        padding: 20px
+    }
+    .card .table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+    .card .table thead,tbody
+    {
+        padding: 20px;
+        border-bottom: 1px solid rgba(204,204,204,.35);
+    }
+    .card .table tbody tr td, .card .table tbody tr th {
+        padding: 10px;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+    }
+    .card .body {
+        font-size: 14px;
+        color: #555;
+        padding: 20px;
+    }
+   
+    @-webkit-keyframes auto_dismiss 
+    {
+        0%   {opacity: 1}
+        25%  {opacity: 1}
+        50%  {opacity: .9}
+        75%  {opacity: .5}
+        100% {opacity: .0;display: none;}
+    }
+    @-moz-keyframes auto_dismiss 
+    {
+        0%   {opacity: 1}
+        25%  {opacity: 1}
+        50%  {opacity: .9}
+        75%  {opacity: .5}
+        100% {opacity: .0;display: none;}
+    }
+    @-ms-keyframes auto_dismiss 
+    {
+        0%   {opacity: 1}
+        25%  {opacity: 1}
+        50%  {opacity: .9}
+        75%  {opacity: .5}
+        100% {opacity: .0;display: none;}
+    }
+    @-o-keyframes auto_dismiss 
+    {
+        0%   {opacity: 1}
+        25%  {opacity: 1}
+        50%  {opacity: .9}
+        75%  {opacity: .5}
+        100% {opacity: .0;display: none;}
+    }
+    @keyframes auto_dismiss 
+    {
+        0%   {opacity: 1}
+        25%  {opacity: 1}
+        50%  {opacity: .9}
+        75%  {opacity: .5}
+        100% {opacity: .0;display: none;}
+    }

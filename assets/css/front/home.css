@@ -1,0 +1,547 @@
+.black_overlay {
+	background: url("../../images/transparent.png");
+	width:100%;
+	height:100%;
+	z-index:999;
+	top:0;
+	left:0;
+	position:fixed;
+}
+.black_overlay:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	/*background: url(images/loader.gif) no-repeat 50% 50%;*/
+}
+.messageCenter {
+	margin:230px auto 0;
+	width:500px;
+}
+.alert-success {
+	height:100px;
+	border-radius:10px;
+	background: #3097f2; /* Old browsers */
+	background: -moz-linear-gradient(top, #3097f2 0%, #2989d8 50%, #7db9e8 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3097f2), color-stop(50%, #2989d8), color-stop(100%, #7db9e8)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #3097f2 0%, #2989d8 50%, #7db9e8 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #3097f2 0%, #2989d8 50%, #7db9e8 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #3097f2 0%, #2989d8 50%, #7db9e8 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #3097f2 0%, #2989d8 50%, #7db9e8 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3097f2', endColorstr='#7db9e8', GradientType=0 ); /* IE6-9 */
+	-moz-box-shadow: 1px 0 14px 1px #000;
+	-webkit-box-shadow: 1px 0 14px 1px #000;
+	box-shadow: 1px 0 14px 1px #000;
+	padding:5px;
+}
+.border_alert {
+	clear:both;
+	border:2px dashed #fff;
+	border-radius:10px;
+	height:85px;
+	padding-top:10px;
+	text-align:center;
+	font-size:20px;
+	color:#fff;
+}
+
+.dropdown-menu {
+	position: absolute;
+	top:42px;
+	z-index: 900;
+	float: right;
+	background-color: #fff;
+	border-color: #999;
+	border-color: rgba(0, 0, 0, .2);
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+	background-clip: padding-box;
+	height:auto;
+	min-height:100px;
+	width:240px;
+	padding:15px;
+    right:50px;
+    font-family:Verdana, Geneva, sans-serif;
+}
+ .dropdown-caret {
+	position: absolute;
+	top: -6px;
+	left: 12px;
+	width: 26px;
+	height: 8px;
+	float: left;
+	overflow: hidden;
+}
+.dropdown-caret.right {
+	left: auto;
+	right: 10px;
+}
+ .caret-outer {
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-bottom: 7px solid #aaa;
+	border-bottom-color: rgba(0, 0, 0, .2);
+    background-image: url("../../images/top_arrow1.jpg"); background-repeat: no-repeat; height: 8px; 
+	width: 13px;
+	position: absolute;
+	/* top: -9px; */
+	background-position: 0 -2px;
+}
+ .caret-inner {
+	top: 1px;
+	left: 1px;
+	display: inline-block;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-bottom: 6px solid #fff;
+}
+ .caret-inner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: inline-block;
+   
+}
+.FieldBg {
+	float:left;
+	width:100%;
+	margin-bottom:10px;
+}
+.FieldSet {
+	float:left;
+	width:100%;
+	margin-bottom:5px;
+	font-size:12px;
+	color:#333;
+}
+.Formstyle {
+	width:100%;
+	border:1px solid #ccc;
+	height:28px;
+	border-radius:5px;
+}
+input:focus {
+	border: 1px solid #56b4ef;
+}
+.sign {
+	width:auto;
+	height:30px;
+	padding:0 8px 5px;
+	border:1px solid #09c;
+	color:#ffffff;
+	font-size:12px;
+	font-weight:bold;
+	border-radius:5px;
+	background-image: -webkit-gradient(  linear,  left top,  left bottom,  color-stop(0, #1282FA),  color-stop(1, #C4EBFF) );
+	background-image: -o-linear-gradient(bottom, #1282FA 0%, #C4EBFF 100%);
+	background-image: -moz-linear-gradient(bottom, #1282FA 0%, #C4EBFF 100%);
+	background-image: -webkit-linear-gradient(bottom, #1282FA 0%, #C4EBFF 100%);
+	background-image: -ms-linear-gradient(bottom, #1282FA 0%, #C4EBFF 100%);
+	background-image: linear-gradient(to bottom, #1282FA 0%, #C4EBFF 100%);
+    cursor: pointer;
+}
+.Remember {
+	float:right;
+	width:auto;
+	margin-left:10px;
+	font-size:12px;
+}
+.forgot {
+	width:100%;
+	float:left;
+	margin-bottom:5x;
+	font-size:12px;
+}
+.forgot a:link {
+	color: #0d5b8c;
+	text-decoration: none;
+}
+.forgot a:visited {
+	color: #0d5b8c;
+}
+.forgot a:hover {
+	color: #000;
+}
+.forgot a:active {
+	color: #0d5b8c;
+}
+.Relative{ position:relative; width: 100%;}
+.check1{ width:20px; height:20px; float:left;}
+.RememberT{ float:left; width:auto; margin-top: 5px;}
+.LogClose {
+position: absolute;
+right: 12px;
+width: 16px;
+height: 16px;
+top: 8px;
+cursor: pointer;
+}
+
+#user_account_div
+{
+    //min-height: 80px;
+}
+.error{color:red;} 
+label.error{ margin-top:20px;color:#ff0;font-size:12px;}
+.FieldSetProfile-L{float:left; width:19%;}
+.FieldSetProfile-R{float:right; width:79%;}
+.Field-L{float:left;}
+.Field-R{float:right;}
+.FieldSet p{text-align:justify; margin:3px 0;}
+
+/*
+
+________________________________________________*/
+
+html,body{width:100%;height:100%;padding:0;background:#fff;margin:0;font-family:arial}
+a { text-decoration:none }
+
+/* Login Container (default to float:right) */
+#loginContainer {
+    position:relative;
+    float:right;
+    font-size:12px;
+}
+
+/* Login Button */
+#loginButton {
+	display:inline-block;
+	float:right;
+	border:1px solid #0165ad;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	position:relative;
+	z-index:30;
+	cursor:pointer;
+	background-color: #d2e0ea;
+	background-image: url("../../images/home/buttonbg.png");
+	background-repeat: repeat-x;
+	background-position: right bottom;
+}
+
+#logoutButton {
+	display:inline-block;
+	float:right;
+	border:1px solid #0165ad;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	position:relative;
+	z-index:30;
+	cursor:pointer;
+	background-color: #d2e0ea;
+	background-image: url("../../images/home/buttonbg.png");
+	background-repeat: repeat-x;
+	background-position: right bottom;
+}
+
+
+
+
+/* Login Button Text */
+#loginButton span {
+    color:#ffffff; 
+    font-size:14px; 
+    font-weight:bold; 
+    text-shadow:1px 1px #333; 
+    padding:7px 29px 9px 10px;
+    display:block
+}
+
+#logoutButton span {
+    color:#ffffff; 
+    font-size:14px; 
+    font-weight:bold; 
+    text-shadow:1px 1px #333; 
+    padding:7px 29px 9px 10px;
+    display:block
+}
+
+#loginButton:hover {
+    background:url("../../images/home/buttonbgHover.png") repeat-x;
+}
+
+/* Login Box */
+#loginBox {
+    position:absolute;
+    top:34px;
+    right:0;
+    display:none;
+    z-index:29;
+}
+
+#logoutBox {
+    position:absolute;
+    top:34px;
+    right:0;
+    display:none;
+    z-index:29;
+}
+
+#forgetBox {
+    position:absolute;
+    top:34px;
+    right:0;
+    display:none;
+    z-index:29;
+}
+
+/* If the Login Button has been clicked */    
+#loginButton.active {
+    border-radius:3px 3px 0 0;
+}
+
+#loginButton.active span {
+    background-position:126px -76px;
+}
+
+#logoutButton.active {
+    border-radius:3px 3px 0 0;
+}
+
+#logoutButton.active span {
+    background-position:126px -76px;
+}
+
+
+/* A Line added to overlap the border */
+#loginButton.active em {
+    position:absolute;
+    width:100%;
+    height:1px;
+    background:#006bc3;
+    bottom:-1px;
+}
+
+/* Login Form */
+#loginForm {
+    width:248px; 
+    border:1px solid #006cc4;
+    border-radius:3px 0 3px 3px;
+    -moz-border-radius:3px 0 3px 3px;
+    margin-top:-1px;
+    background:#006cc4;
+    padding:6px;
+}
+#forgetForm {
+    width:248px; 
+    border:1px solid #006cc4;
+    border-radius:3px 0 3px 3px;
+    -moz-border-radius:3px 0 3px 3px;
+    margin-top:-1px;
+    background:#006cc4;
+    padding:6px;
+}
+
+#logoutButton.active em {
+    position:absolute;
+    width:100%;
+    height:1px;
+    background:#006bc3;
+    bottom:-1px;
+}
+
+/* Login Form */
+#logoutForm {
+    width:248px; 
+    border:1px solid #006cc4;
+    border-radius:3px 0 3px 3px;
+    -moz-border-radius:3px 0 3px 3px;
+    margin-top:-1px;
+    background:#006cc4;
+    padding:6px 6px 15px;
+}
+
+
+#loginForm fieldset {
+    margin:0 0 12px 0;
+    display:block;
+    border:0;
+    padding:0;
+}
+#forgetForm fieldset {
+    margin:0 0 12px 0;
+    display:block;
+    border:0;
+    padding:0;
+}
+
+#logoutForm fieldset {
+    margin:0;
+    display:block;
+    border:0;
+    padding:0;
+}
+
+fieldset#body {
+    background:#fff;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    padding:10px 13px;
+    margin:0;
+}
+
+#loginForm #checkbox {
+    width:auto;
+    margin:1px 9px 0 0;
+    float:left;
+    padding:0;
+    border:0;
+    *margin:-3px 9px 0 0; /* IE7 Fix */
+}
+
+#body label {
+    color:#3a454d;
+    margin:9px 0 0 0;
+    display:block;
+    float:left;
+}
+
+#loginForm #body fieldset label {
+    display:block;
+    float:none;
+    margin:0 0 6px 0;
+}
+
+/* Default Input */
+#loginForm input {
+    width:92%;
+    border:1px solid #899caa;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    color:#3a454d;
+    font-weight:bold;
+    padding:5px 8px;
+    box-shadow:inset 0px 1px 3px #bbb;
+    -webkit-box-shadow:inset 0px 1px 3px #bbb;
+    -moz-box-shadow:inset 0px 1px 3px #bbb;
+    font-size:12px;
+}
+
+#forgetForm input {
+    width:92%;
+    border:1px solid #899caa;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    color:#3a454d;
+    font-weight:bold;
+    padding:5px 8px;
+    box-shadow:inset 0px 1px 3px #bbb;
+    -webkit-box-shadow:inset 0px 1px 3px #bbb;
+    -moz-box-shadow:inset 0px 1px 3px #bbb;
+    font-size:12px;
+}
+
+#forgetForm #login {
+    width:auto;
+    float:left;
+    background:#339cdf url(../../images/home/buttonbg.png) repeat-x;
+    color:#fff;
+    padding:3px 10px 25px 6px;
+    text-shadow:0px -1px #278db8;
+    border:1px solid #339cdf;
+    box-shadow:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    margin:0 12px 0 0;
+    cursor:pointer;
+    *padding:7px 2px 8px 2px; /* IE7 Fix */
+}
+
+/* Sign In Button */
+#loginForm #login {
+    width:auto;
+    float:left;
+    background:#339cdf url(../../images/home/buttonbg.png) repeat-x;
+    color:#fff;
+    padding:3px 10px 25px 6px;
+    text-shadow:0px -1px #278db8;
+    border:1px solid #339cdf;
+    box-shadow:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    margin:0 12px 0 0;
+    cursor:pointer;
+    *padding:7px 2px 8px 2px; /* IE7 Fix */
+}
+
+#logoutForm #logout {
+    width:auto;
+    float:right;
+    background:#339cdf url(../../images/home/buttonbg.png) repeat-x;
+    color:#fff;
+    padding:3px 10px 25px 6px;
+    text-shadow:0px -1px #278db8;
+    border:1px solid #339cdf;
+    box-shadow:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    margin:0 12px 0 0;
+    cursor:pointer;
+    *padding:7px 2px 8px 2px; /* IE7 Fix */
+}
+
+/* Forgot your password */
+#loginForm span {
+    text-align:center;
+    display:block;
+    padding:7px 0 4px 0;
+}
+
+#logoutForm span {
+    text-align:center;
+    display:block;
+    padding:7px 0 4px 0;
+}
+
+#forgetForm span {
+    text-align:center;
+    display:block;
+    padding:7px 0 4px 0;
+}
+
+#loginForm span a {
+    color:#ffffff;
+    text-shadow:1px 1px #333;
+    font-size:12px;
+}
+
+#forgetForm span a {
+    color:#ffffff;
+    text-shadow:1px 1px #333;
+    font-size:12px;
+}
+
+ #left {
+    color:#ffffff;    
+    font-size:12px;
+	text-shadow:1px 1px #333;
+	float:left;
+}
+
+
+ #right {    
+    color:#ffffff;
+    font-size:12px;
+	text-shadow:1px 1px #333;
+	float:right;
+	margin-bottom:10px;
+
+}
+
+input:focus {
+    outline:none;
+}
+.absoluteL{ position:absolute; right:8px; top:6px;}
+#loginForm #body fieldset label.error{color:red !important;}
+#forgetForm #body fieldset label.error{color:red !important;}
+
+#logoutForm #userName{float: right;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+    width: 160px;
+}
