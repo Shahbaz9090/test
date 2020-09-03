@@ -252,6 +252,10 @@ class Form_module_lib
                     set_flashdata('success', 'Record successfully saved.');
                     if(!$dynamic_redirect)
                     {
+                        if($table_name == 'service')
+                        {
+                            $this->obj->service_mod->insert_job_card_entry($id);
+                        }                        
                         return true;
                     }
                     redirect(($this->obj->data['base_url'].'/list_items'));

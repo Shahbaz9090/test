@@ -28,12 +28,14 @@ class Service extends MY_Controller {
         define('PRIMARY_KEY', 'form_id');
         $this->data['module']           = 'Service';
         $this->lang->load('order', get_site_language());
-        $this->data['title'] 	        = "Sales Spares Order";
+        $this->data['title'] 	        = "Service Enquiry";
         $this->data['title_for_view']   = "Sales Spare";
         $this->data['readonly'] 		= NULL;
         $this->data['base_url'] 		= base_url("service/");
         $this->load->library('form_module_lib', $this->data['base_url']);
+        // $this->load->library('order_lib', $this->data['base_url']);
         $this->load->model('service_mod');
+        $this->load->model('job_mod');
         $this->data['module_url'] 		= base_url("service/");
         $this->data['sales_enquiry_url']= base_url("enquiry/sales_spares_enquiry_china/");;
         $this->data['table_name']       = "service";
@@ -42,17 +44,62 @@ class Service extends MY_Controller {
     
 	public function list_items()
 	{  
-		$this->order_lib->list_items();
+		$config['base_url']     = $this->data['base_url']."/list_items/";
+        $config['per_page']     = PERPAGE;
+        $config["uri_segment"]  = 4;
+        if( count($_GET) > 0 )
+        {
+            $query_string_url               = '?'.http_build_query($_GET, '', "&");
+            $config['enable_query_string']  = TRUE;
+            $config['suffix']               = $query_string_url;
+            $config['first_url']            = $config["base_url"].$config['suffix'];
+        }
+        $config['full_tag_open']    = '<ul class="pagination pagination-sm">';
+        $config['full_tag_close']   = '</ul>';
+        $config['first_link']       = FALSE;
+        $config['last_link']        = FALSE;
+        $config['first_tag_open']   = '<li>';
+        $config['first_tag_close']  = '</li>';
+        $config['prev_link']        = '&laquo;';
+        $config['prev_tag_open']    = '<li class="prev">';
+        $config['prev_tag_close']   = '</li>';
+        $config['next_link']        = '&raquo;';
+        $config['next_tag_open']    = '<li>';
+        $config['next_tag_close']   = '</li>';
+        $config['last_tag_open']    = '<li>';
+        $config['last_tag_close']   = '</li>';
+        $config['cur_tag_open']     = '<li class="active"><a href="#">';
+        $config['cur_tag_close']    = '</a></li>';
+        $config['num_tag_open']     = '<li>';
+        $config['num_tag_close']    = '</li>';
+        $page                       = $this->uri->segment(4) ? $this->uri->segment(4) : 0;
+        $data['total_pages']        = $page;
+        $response                   = $this->service_mod->get_service_list('', '', PERPAGE, $page);
+        $this->data['data_list']    = $response['result'];
+        $this->data['total_record'] = $response['total'];
+        $config['total_rows']       = $response['total'];
+        // pr($response);die;
+        $this->load->library('pagination');
+        $this->pagination->initialize($config);
+        $this->data['pagination_link'] = $this->pagination->create_links();
+        /*Pagination*/
+        $this->data['place_holder']    = "Enter filter terms here";        
+        $this->data['action']          = "list";
+        $this->data['module']          = "Service Enquiry";//for breadcrumb
+        $views[]                       = "service_list";
+        // pr($this->data);die;
+        view_load($views, $this->data);
 	}
     
     public function add()
     {
-    	$this->form_module_lib->dynamic_add($this->data['table_name']);
+        $this->data['module'] = "Service Enquiry";
+    	$this->form_module_lib->dynamic_add($this->data['table_name'],'',false);
     }
 
 	public function edit($id)
     {
-        $this->order_lib->edit( $id, $this->data['table_name'] );
+        $this->form_module_lib->dynamic_edit($id, $this->data['table_name']);
     }
 
     public function check_all_fields_unq()
@@ -91,13 +138,7 @@ class Service extends MY_Controller {
                 $status_id = $this->input->post('status_id');
                 $status = $this->service_mod->change_po_status($status_id, $id);
             }
-            // elseif(isset($_POST['status_id_china']))
-            // {
-            //     $status_id = $this->input->post('status_id_china');
-            //     $product_id = $this->input->post('product_id');
-            //     $whose = 'china';
-            //      $status = $this->service_mod->change_po_status($status_id, $whose, $product_id);
-            // }
+            
             elseif(isset($_POST['change_cfit_name']))
             {
                 $cfit_id = $this->input->post('cfit_id');
@@ -112,55 +153,48 @@ class Service extends MY_Controller {
         }
         $this->data['action']          = "view";
         $response = $this->service_mod->get_service_list($id, '', '', '');
-        // pr($response);die;
         $this->data['result']          = $response['result'][0];
-        /*$this->data['data_list']   = $response['result'];*/
-        if(isset($this->data['result']) && !empty($this->data['result']) && !empty($this->data['result']->client_contact))
-        {
-            // $client_contact_id = $this->data['result']->client_contact;
-            // pr($client_contact_id);die;
-            // $client_contact_id = explode(",", $client_contact_id);
-            // $client_contact_list = $this->service_mod->get_client_contact_list($client_contact_id);
-            // $this->data['client_contact_list'] = $client_contact_list;
-        }
-        $this->data['add_product_title'] = lang('sales_spare_add_product_title').' '.$this->data['result']->enq_no;
-        $this->data['edit_product_title'] = lang('sales_spare_edit_product_title').' '.$this->data['result']->enq_no;
-        $this->data['add_quotation_title'] = lang('sales_spare_add_quotation_title').' '.$this->data['result']->enq_no;
-        $this->data['title']           = $this->data['title_for_view'].' Order ['.$this->data['result']->enq_no.']';
-        $this->data['enq_title']       = $this->data['title_for_view'].' Enquiry ['.$this->data['result']->enq_no.']';
-        $this->data['enq_id']          = $this->data['result']->enq_id;
-        $this->data['enq_url']         = $this->data['sales_enquiry_url'];
-        $this->data['product_list']    = $this->service_mod->get_product_list(NULL, $id);
-        $this->data['payment_list']    = $this->service_mod->get_payment_list($id);
+        $this->data['no_of_delivery_challans']    = $this->service_mod->get_delivery_challan_no($id);
         $this->data['internal_notes']  = $this->service_mod->get_internal_notes($id);
-        $this->data['pbg_details']     = $this->service_mod->get_pbg_details($id);
-        $this->data['offer_list']      = $this->service_mod->get_offer_list(NULL, $id);
-        $this->data['price_calc_list'] = $this->service_mod->get_price_calc(NULL, $id);
-        $this->data['document_list']   = $this->service_mod->get_document_list(NULL, $id);
-        $this->data['offer_revision_list']   = $this->service_mod->get_offer_revision_list($id);
+        $job_cards                     = $this->job_mod->get_job_list('','','','',$id);
+        $this->data['job_cards']       = isset($job_cards) && !empty($job_cards)?$job_cards['result']:'';
+        $estimations                   = $this->service_mod->get_estimation($id);
+        if(isset($estimations) && !empty($estimations))
+        {
+            foreach ($estimations as $key=>$estimation)
+            {
+                $job_name          = $estimation->inquiry_no.'-'.$estimation->job_sequence;
+                $components        = $this->job_mod->get_store_issue($job_name);
+                $components_cost = 0;
+                foreach($components as $component)
+                {
+                    $components_cost += $component->total;
+                }
+                $estimations[$key]->components_cost_act = $components_cost;
+            }
+        }
+        $this->data['estimation']           = $estimations;
+        $this->data['total_revision_offer'] = $this->service_mod->get_revisions_offer($id);
+        $this->data['payment_list']         = $this->service_mod->get_payment_list($id);
+        $this->data['invoice_list']         = $this->service_mod->get_invoice_list($id);
+        $this->data['document_list']        = $this->service_mod->get_document_list(NULL, $id);
+        $this->data['offer_revision_list']  = $this->service_mod->get_offer_revision_list($id);
         $mails                              = $this->service_mod->get_mail_list($this->data['result']->mail_no, $this->data['result']->china_mail_no);
-        $mail_list          = $mails['india_mail_list'];
-        $china_mail_list    = $mails['china_mail_list'];
-        $user_sess  = currentuserinfo();
-        $user_id    = $user_sess->id;
-        $user_name  = $user_sess->first_name.' '.$user_sess->last_name;
+        $mail_list                         = $mails['india_mail_list'];
+        $china_mail_list                   = $mails['china_mail_list'];
+        $user_sess                         = currentuserinfo();
+        $user_id                           = $user_sess->id;
+        $user_name                         = $user_sess->first_name.' '.$user_sess->last_name;
         $this->data['user_id']             = $user_id;
         $this->data['user_name']           = $user_name;
         $this->data['mail_lists']          = @$mail_list['mail_list'];
         $this->data['attachments']         = @$mail_list['mail_doc'];
         $this->data['china_mail_lists']    = @$china_mail_list['mail_list'];
         $this->data['china_attachments']   = @$china_mail_list['mail_doc'];
-        $views[]                           = "view_order"; 
-        $this->data['unit_master']         = get_uom_from_master();
-        $this->data['supplier_master']     = get_supplier_from_master();
-        $this->data['order_status_india_master'] = get_order_status_india_master();
-        $this->data['po_status']                 = get_po_status();
-        $this->data['order_status_china_master'] = get_order_status_china_master();
-        $this->data['china_employee_master']     = get_china_employee_master();
-        $this->data['total_supplier_po']         = get_supplier_po($order_id);
-        // $this->data['name'] = $this->get_module();
-        $this->data['submodule'] = 'View '.$this->data["name"]->module_title;
-        // pr($this->data);die;
+        $this->data['module']              = "Service Enquiry";//for breadcrumb
+        $this->data['submodule']           = 'View '.$this->data['module'];
+        $this->data['title']               = 'View '.$this->data['module'];
+        $views[]                           = "view_service"; 
         view_report($order_id);
         view_load($views,$this->data);
 	   
@@ -176,154 +210,385 @@ class Service extends MY_Controller {
         // $this->service_mod->add_more_email($service);//function to be created
     }
 
-    public function add_product($id = NULL)
+    public function add_offer($id = NULL)
 	{	
 		if(!$id)
 		{
 			redirect($this->data['module_url'].'/list_items');
 		}
-		$this->order_lib->add_product($id);
+		$status = $this->service_mod->add_offer($id);
+        if($status)
+        {
+            set_flashdata('success',' Offer added successfully.');
+        }
+        else
+        {
+            set_flashdata('error',' Something went wrong,Please try again.');
+        }
+        return redirect($this->data['module_url'].'/view/'.$id);
 	   
 	}
 
-	public function edit_product($id, $enquiry_id)
-	{	
-		if(!$id && !$enquiry_id)
-		{
-			redirect($this->data['module_url'].'/list_items');
-		}
-		$this->order_lib->edit_product($id, $enquiry_id);
-	}
-
-    public function delete_product($product_id, $enquiry_id)
+    public function edit_offer($service_id = NULL)
     {   
-        if(!$enquiry_id && !$product_id)
-        {
-            redirect($this->data['module_url'].'/view/'.$enquiry_id);
-        }
-        $this->order_lib->delete_product($product_id, $enquiry_id);
-    }
-
-	public function edit_product_china($id, $enquiry_id)
-    {   
-        if(!$id && !$enquiry_id)
+        if(!$service_id)
         {
             redirect($this->data['module_url'].'/list_items');
         }
-        $this->order_lib->edit_product_china($id, $enquiry_id);
+        $status = $this->service_mod->edit_offer($service_id);
+        if($status)
+        {
+            set_flashdata('success',' Offer edited successfully.');
+        }
+        else
+        {
+            set_flashdata('error',' Something went wrong,Please try again.');
+        }
+        return redirect($this->data['module_url'].'/view/'.$service_id);
+       
     }
 
-    public function add_po_product($order_id)
+	public function freeze_offer($service_id)
 	{	
-		if(!$order_id)
-		{
-			redirect($this->data['module_url'].'/list_items');
-		}
-		$this->order_lib->add_po_product($order_id);
-	   
-	}
-
-	public function edit_po_product($product_id, $enquiry_id)
-	{	
-		if(!$product_id && !$enquiry_id)
-		{
-			redirect($this->data['module_url'].'/list_items');
-		}
-		$this->order_lib->edit_po_product($product_id, $enquiry_id);
-	}
-
-	public function edit_quotation($id, $product_id, $enquiry_id)
-    {   
-        if(!$id && !$product_id && !$enquiry_id)
+        if(!$service_id)
         {
             redirect($this->data['module_url'].'/list_items');
         }
-        $this->order_lib->edit_quotation($id, $product_id, $enquiry_id);
-    }
+        $status = $this->service_mod->freeze_offer($service_id);
+        if($status)
+        {
+            set_flashdata('success',' Offer freezed successfully.');
+        }
+        else
+        {
+            set_flashdata('error',' Something went wrong,Please try again.');
+        }
+        return redirect($this->data['module_url'].'/view/'.$service_id);
+		
+	} 
 
-    public function edit_offer($product_id, $order_id)
+
+    public function unfreeze_offer($service_id)
     {   
-        if(!$product_id && !$order_id)
+        if(!$service_id)
         {
             redirect($this->data['module_url'].'/list_items');
         }
-        $this->order_lib->edit_offer($product_id, $order_id);
+        $status = $this->service_mod->unfreeze_offer($service_id);
+        if($status)
+        {
+            set_flashdata('success',' Offer un-freezed successfully.');
+        }
+        else
+        {
+            set_flashdata('error',' Something went wrong,Please try again.');
+        }
+        return redirect($this->data['module_url'].'/view/'.$service_id);
+        
     }
 
-    public function delete_quotation($quotation_id, $enquiry_id)
+    public function download_offer($service_id = null)
+    {   
+        if(!$service_id)
+        {
+            redirect($this->data['module_url'].'/list_items/');
+        }
+        $response = $this->service_mod->get_service_list($service_id, '', '', '');
+        $this->data['result']        = $response['result'][0];
+        $this->data['offer_list']    = $this->service_mod->get_offer_details($service_id);
+        $views                       = "service_offer"; 
+        $this->load->view($views, $this->data);
+    }
+    
+    public function add_payment_details_service($service_id)
+    {
+        // $this->order_lib->check_custom_permission($service_id,$this->data['table_name']);
+        if($service_id)
+        {
+            $_POST['service_id'] = $service_id;
+            $dynamic_redirect = false;
+            $this->form_module_lib->dynamic_add("payment_details_service",'',$dynamic_redirect);
+        }
+        set_flashdata('error','Something went wrong,Please try again!!!');
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+
+    public function edit_payment_details_service($id,$service_id)
+    {
+        // $this->order_lib->check_custom_permission($service_id,$this->data['table_name']);
+        if($service_id)
+        {
+            $form = "payment_details_service";
+            $dynamic_redirect = false;
+            $this->form_module_lib->dynamic_edit($id,$form,'',$dynamic_redirect);
+        }
+        set_flashdata('error','Something went wrong,Please try again!!!');
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function delete_payment_details_service($id,$service_id)
+    {
+        // $this->order_lib->check_custom_permission($service_id,$this->data['table_name']);
+        if($service_id && $id)
+        {
+            $form = "payment_details_service";
+           $this->db->where_in('form_id', $id);
+            $status = $this->db->delete(TBL_PREFIX.$form);
+            if($status)
+            {
+                set_flashdata('success','Record deleted successfully!');
+            }
+            else
+            {
+                set_flashdata('error','Something went wrong,Please try again!');    
+            }
+        }
+        set_flashdata('error','Something went wrong,Please try again!!!');
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function create_delivery_challan($service_id = null)
+    {   
+        $ids = $this->input->get('job_id');
+        if(!$ids)
+        {
+            set_flashdata('error','Something went wrong, Please try again!!!');
+            redirect($this->data['module_url'].'/view/'.$service_id);
+        }
+        $status = $this->service_mod->create_delivery_challan($ids,$service_id);
+        if($status)
+        {
+            set_flashdata('success','Job card added to delivery challan!!!');
+        }
+        else
+        {
+            set_flashdata('error','Something went wrong,Please try again!!!');
+        }
+        redirect($this->data['module_url'].'/view/'.$service_id);
+       
+    }
+
+    public function add_delivery_box($id = NULL)
     {   
         if(!$id)
         {
             redirect($this->data['module_url'].'/list_items');
         }
-        $this->order_lib->delete_quotation($quotation_id, $enquiry_id);
+        $status = $this->service_mod->add_delivery_box($id);
+        if($status)
+        {
+            set_flashdata('success','Box added to delivery challan!!!');
+        }
+        else
+        {
+            set_flashdata('error','Something went wrong,Please try again!!!');
+        }
+        return redirect($this->data['module_url'].'/view/'.$id);
+       
     }
-    
-	public function add_document($enquiry_id = NULL)
-	{	
-		if(!$enquiry_id)
-		{
-			redirect($this->data['module_url'].'/list_items');
-		}
-		$this->order_lib->add_document($enquiry_id);
-	}
 
-	public function delete_document()
-	{	
-		
-		$this->order_lib->delete_document();
-	}
-	
-	public function release_quotation()
-	{	
-		
-		$this->order_lib->release_quotation();
-	}
-	
-    public function received_product($order_id)
+    public function delete_box($id = NULL,$service_id = NULL)
     {   
-        $this->order_lib->received_product($order_id);
+        if(!$id && !$service_id)
+        {
+            redirect($this->data['module_url'].'/list_items');
+        }
+        $this->service_mod->delete_box($id,$service_id);
+        return redirect($this->data['module_url'].'/view/'.$service_id);
+       
+    }
+
+    public function delete_challan($service_id = NULL)
+    {   
+        if(!$service_id)
+        {
+            redirect($this->data['module_url'].'/list_items');
+        }
+        $this->service_mod->delete_challan($service_id);
+        return redirect($this->data['module_url'].'/view/'.$service_id);
+       
+    }
+
+
+    public function download_delivery_challan($service_id = null, $challan=null)
+    {   
+        if(!$challan)
+        {
+            redirect($this->data['module_url'].'/view/'.$service_id);
+        }
+        $this->data['challan_details'] = $this->service_mod->get_challan_data($service_id,$challan);
+        $views                         = "delivery_packing_list"; 
+        $this->load->view($views, $this->data);
     }
     
-    public function release_final_quotation()
+	public function create_invoice($service_id = NULL)
+	{	
+		if(isPostBack())
+        {
+            $status = $this->service_mod->add_invoice($service_id);
+            if($status)
+            {
+                set_flashdata('success','Invoice created successfully!!!');
+                redirect($this->data['module_url'].'/view/'.$service_id);
+            }
+            else
+            {
+                set_flashdata('error','Invoice not added,Please try again!!!');
+            }
+        }
+        $job_id                         = $this->input->get('job_ids');
+        $this->data['title']            = "Add";
+        $this->data['service_id']       = $service_id;
+        $this->data['contact_person']   = $this->service_mod->get_contact_person($service_id);
+        $this->data['consignee']        = $this->service_mod->get_client_name();
+        $this->data['shipment_company'] = get_shipment_company();
+        $this->data['taxable_value']    =  $this->service_mod->get_job_costs_for_invoice($service_id,$job_id);
+        $views[]                        = "add_invoice";
+        $this->data['unit_master']      = get_uom_from_master();
+        // pr($this->data['unit_master']);die;
+        view_load($views,$this->data);
+	}
+
+    public function fetch_data_according_company()
+    {
+        if($this->input->is_ajax_request())
+        {
+            $company_id = $this->input->get_post('company_id');
+            $data = $this->service_mod->fetch_data_according_company($company_id);
+            if($data['status'] == 'success')
+            {
+                echo json_encode($data['result']);
+            }
+        }
+    }
+
+    public function fetch_contact_according_company()
+    {
+        if($this->input->is_ajax_request())
+        {
+            $company_id = $this->input->get_post('company_id');
+            $data = $this->service_mod->fetch_contact_according_company($company_id);
+            echo $data;
+        }
+    }
+	
+    public function edit_invoice($id = NULL ,$service_id = NULL)
+    {   
+        if(isPostBack())
+        {
+            $status = $this->service_mod->edit_invoice($id,$service_id);
+            if($status)
+            {
+                set_flashdata('success','Invoice updated successfully!!!');
+                redirect($this->data['module_url'].'/view/'.$service_id);
+            }
+            else
+            {
+                set_flashdata('error','Invoice not updated,Please try again!!!');
+            }
+        }
+        $this->data['title']            = "Update";
+        $this->data['service_id']       = $service_id;
+        $this->data['invoice_detail']   = $this->service_mod->get_invoice_list($service_id,$id);
+        $this->data['contact_person']   = $this->service_mod->get_contact_person($service_id);
+        $this->data['consignee']        = $this->service_mod->get_client_name();
+        $this->data['shipment_company'] = get_shipment_company();
+        $this->data['taxable_value']    =  $this->service_mod->get_job_costs_for_invoice($service_id,$this->data['invoice_detail']->job_id);
+        $views[]                        = "add_invoice";
+        $this->data['unit_master']      = get_uom_from_master();
+        // pr($this->data['invoice_detail']);die;
+        view_load($views,$this->data);
+    }
+	
+    public function freeze_invoice($service_id)
+    {   
+        if(!$service_id)
+        {
+            redirect($this->data['module_url'].'/list_items');
+        }
+        $status = $this->service_mod->freeze_invoice($service_id);
+        if($status)
+        {
+            set_flashdata('success',' Invoice freezed successfully.');
+        }
+        else
+        {
+            set_flashdata('error',' Something went wrong,Please try again.');
+        }
+        return redirect($this->data['module_url'].'/view/'.$service_id);
+        
+    }
+    
+    public function dispatch_invoice($service_id)
 	{	
 		
-		$this->order_lib->release_final_quotation();
+		if(!$service_id)
+        {
+            redirect($this->data['module_url'].'/list_items');
+        }
+        $status = $this->service_mod->dispatch_invoice($service_id);
+        if($status)
+        {
+            set_flashdata('success',' Invoice dispatched successfully.');
+        }
+        else
+        {
+            set_flashdata('error',' Something went wrong,Please try again.');
+        }
+        return redirect($this->data['module_url'].'/view/'.$service_id);
 	}
 	
-    public function ajax_list_items($limit = 10)
-	{	
-
-		$this->order_lib->ajax_list_items($limit);
-	}
-    
-    public function delete($id)
+    public function delete_invoice($id,$service_id)
     {
-    	if(!$id)
+    	if(!$id || !$service_id)
 		{
 			set_flashdata('error', 'Record could not be deleted..');
 			redirect($this->data['base_url'].'/list_items/');
 		}
-		$this->order_lib->delete($id);
+		$status = $this->service_mod->delete_invoice($id,$service_id);
+        if($status)
+        {
+            set_flashdata('success',' Invoice deleted successfully!!!');
+        }
+        else
+        {
+            set_flashdata('error',' Something went wrong,Please try again.');
+        }
+        return redirect($this->data['module_url'].'/view/'.$service_id);
     }
 		
-    public function status($id = null) 
-    {
-
-        $this->order_lib->status($id);
-
+    public function invoice_print($service_id = null)
+    {   
+        if(!$service_id)
+        {
+            redirect($this->data['module_url'].'/list_items/');
+        }
+        $this->data['invoice_detail'] = $this->service_mod->get_invoice_details($service_id);
+        $this->data['job_details']    = $this->service_mod->get_job_details($service_id);
+        // pr($this->data['invoice_detail']);die;
+        //title & other info
+        $this->data['title']      = 'Inch Digital Technologies Pvt. Ltd.';
+        $this->data['email']      = 'sales.technologies@inchgroup.co.in';
+        $this->data['website']    = 'www.inchgroup.co.in/energy';
+        $this->data['cin']        = 'U29307HR2017PTC070634';
+        $this->data['gst']        = '06AAECI6178C1ZN';
+        $this->data['pan']        = 'AAECI6178C';
+        $this->data['msme']       = 'HR05A0008820';
+        $this->data['account_no'] = '37985141267';
+        $views                    = "view_invoice"; 
+        $this->load->view($views, $this->data);
     }
 
     public function delete_records()
     {
-
         $this->order_lib->delete_records();
     }
 
 	public function get_dependent_data()
     {
 
-        $this->order_lib->get_dependent_data();
+        $this->form_module_lib->get_dependent_data();
     }
   	
   	public function get_product_detail()
@@ -424,26 +689,21 @@ class Service extends MY_Controller {
     /*Chat system*/
     
 
-    public function add_payment_details($order_id)
-    {
-        $this->order_lib->add_dynamic_details($order_id,'payment_details');
-    }
-
-
-    public function edit_payment_details($id,$order_id)
-    {
-        $form = "payment_details";
-        $this->order_lib->edit_dynamic_details($id,$order_id,$form);
-    }
-
-    public function delete_payment_details($id,$order_id)
-    {
-        $this->order_lib->delete_dynamic($id,$order_id,'payment_details');
-    }
 
     public function get_dynamic_edit_form()
     {
-        $this->order_lib->get_dynamic_edit_form();
+        if($this->input->is_ajax_request())
+        {
+            $order_id = $this->input->get('order_id');
+            $id = $this->input->get('id');
+            $form = $this->input->get('form');
+            $dynamic_redirect = false;
+            $form_data = $this->form_module_lib->dynamic_edit($id,$form,true,$dynamic_redirect);
+            $form_data['is_modal_view'] = true;
+            $form_data['module_url']= $this->data['module_url'];
+            $form_data['action_url']    = $this->data['base_url'].'/edit_'.$form.'/'.$id.'/'.$order_id;
+            $this->load->view("dynamic_view/edit_form",$form_data);
+        }
     }
 
     public function get_dynamic_form()

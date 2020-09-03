@@ -6,7 +6,14 @@
     float: left;
     width: 100%;
 }
- 
+.text-none:hover
+{
+	text-decoration: none !important;
+}
+.pointer
+{
+	cursor: pointer;
+}
 .chatting_model .modal-dialog {
     position: absolute;
     bottom: 0;
@@ -1883,11 +1890,6 @@
 					<div class="title">
 						<h4>
 							<span><?=$title;?></span>
-							<?php if(isset($enq_id) && !empty($enq_id)):?>
-								<a href="<?=$enq_url."/view/".$enq_id?>">
-									<span class="text-right" style="float: right;margin-right: 15px;color: white;"><?=$enq_title;?></span>
-								</a> 
-							<?php endif;?>
 						</h4>
 					</div>
 					<ul class="nav nav-tabs sticky">
@@ -1917,70 +1919,76 @@
                                         $i = 1;?>
                                         <tbody>
                                             <tr>
-                                                <th style="background: transparent;width:13%;">Inquiry No.</th>
-                                                <td style="text-align: left;width: 40%"><?php echo $row->inquiry_no; ?></td>
-                                                <th style="width: 12%">Dated</th>
-                                                <td style="text-align: left;"><?php echo isset($row->enquiry_date) && strtotime($row->enquiry_date)?date('d/m/Y',strtotime($row->enquiry_date)):'--/--/----' ?></td>
+                                                <th style="background: transparent;width:13%;">Job No.</th>
+                                                <td style="text-align: left;width: 40%"><?php echo $row->inquiry_no.'-'.$row->job_sequence; ?></td>
+                                                <th style="width: 12%">Name Of Card</th>
+                                                <td style="text-align: left;"><?php echo isset($row->card_name) && !empty($row->card_name)?ucwords($row->card_name):'---' ?></td>
                                             </tr>
                                             <tr>
 
-                                                <th>Client Name</th>
-                                                <td style="text-align: left;"><?php echo isset($row->client_name) && !empty($row->client_name)?ucwords($row->client_name):'---' ?></td>
-                                                <th style="background: transparent;">Type of Cards</th>
+                                                <th>Card Make</th>
+                                                <td style="text-align: left;"><?php echo isset($row->card_make) && !empty($row->card_make)?ucwords($row->card_make):'---' ?></td>
+                                                <th style="background: transparent;">Card Model</th>
+                                                <td style="text-align: left;"><?php echo isset($row->card_model) && !empty($row->card_model)?ucwords($row->card_model):'---' ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Machine Make</th>
+                                                <td style="text-align: left;"><?php echo isset($row->machine_make) && !empty($row->machine_make)?ucwords($row->machine_make):'---' ?></td>
+                                                <th>Machine Model</th>
+                                                <td style="text-align: left;"><?php echo isset($row->machine_model) && !empty($row->machine_model)?ucwords($row->machine_model):'---' ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Inq No.</th>
+                                                <td style="text-align: left;"><?php echo $row->inquiry_no; ?></td>
+                                                <th>Dated</th>
+                                                <td style="text-align: left;"><?php echo isset($row->enquiry_date) && strtotime($row->enquiry_date)?date('d/m/Y',strtotime($row->enquiry_date)):'--/--/----' ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Type of Cards</th>
                                                 <td style="text-align: left;"><?php echo $row->card_type; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Client Issuer</th>
-                                                <td style="text-align: left;"><?php echo isset($row->client_issuer_name) && !empty($row->client_issuer_name)?ucwords($row->client_issuer_name):'---' ?></td>
-                                                <th>Client Technical</th>
-                                                <td style="text-align: left;"><?php echo isset($row->client_technical_name) && !empty($row->client_technical_name)?ucwords($row->client_technical_name):'---' ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Profile</th>
-                                                <td style="text-align: left;"><?php echo $row->profile==1?'Service':($row->profile==2?'R&D':''); ?></td>
-                                                <th>Inquiry Root</th>
-                                                <td style="text-align: left;"><?php echo $row->enquiry_root==1?'Physical':($row->enquiry_root==2?'Mail':''); ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Gate Pass No.</th>
-                                                <td style="text-align: left;"><?php echo $row->gate_pass; ?></td>
-                                                <th>Gate Pass Date</th>
-                                                <td style="text-align: left;"><?php echo isset($row->gate_pass_date) && strtotime($row->gate_pass_date)?date('d/m/Y',strtotime($row->gate_pass_date)):'--/--/----' ?></td>
+                                                <th>No. of Cards</th>
+                                                <td style="text-align: left;"><?php echo $row->no_of_cards; ?></td>
                                                 
                                             </tr>
                                            
                                             <tr>
-                                                <th>Gate Pass Amount</th>
-                                                <td style="text-align: left;"><i class="fa fa-inr"></i><?php echo $row->gate_amount; ?></td>
-                                                <th>Returnable Date</th>
-                                                <td style="text-align: left;"><?php echo isset($row->return_date) && strtotime($row->return_date)?date('d/m/Y',strtotime($row->return_date)):'--/--/----' ?></td>
+                                                <th>Sales Lead</th>
+                                                <td style="text-align: left;"><?php echo isset($row->sales_lead_name) && !empty($row->sales_lead_name)?ucwords($row->sales_lead_name):'---' ?></td>
+                                                <th>Service Lead</th>
+                                                <td style="text-align: left;"><?php echo isset($row->service_lead_name) && !empty($row->service_lead_name)?ucwords($row->service_lead_name):'---' ?></td>
                                             </tr>
                                             
                                             <tr>
-                                                <th>Sales Lead</th>
-                                                <td style="text-align: left;"><?php echo isset($row->sales_lead_name) && !empty($row->sales_lead_name)?ucwords($row->sales_lead_name):'---' ?></td>
+                                                <th>Reparing Source</th>
+                                                <td style="text-align: left;"><?php echo isset($row->source) && !empty($row->source)?ucwords($row->source):'---' ?></td>
 
-                                                <th>Service Lead</th>
-                                                <td style="text-align: left;"><?php echo isset($row->service_lead_name) && !empty($row->service_lead_name)?ucwords($row->service_lead_name):'---' ?></td>
+                                                <th>Sr. No.</th>
+                                                <td style="text-align: left;"><?php echo isset($row->sr_no) && !empty($row->sr_no)?ucwords($row->sr_no):'---' ?></td>
                                                 
                                             </tr>
                                             <tr>
-                                        		<th>Repairing Source</th>
-                                                <td style="text-align: left;"><?php echo $row->repairing_source==1?'Inhouse':($row->repairing_source==2?'Outside':$row->repairing_source==3?'In & Out':''); ?></td>
-                                                <th>WO Received</th>
-                                                <td style="text-align: left;"><?php echo $row->wo_received==1?'Yes':'No'; ?></td>
+                                        		<th>Service Engineer</th>
+                                                <td style="text-align: left;"><?php echo isset($row->service_engineer) && !empty($row->service_engineer)?ucwords($row->service_engineer):'---' ?></td>
+                                                <th>Time Assigned</th>
+                                                <td style="text-align: left;"><?php echo get_time_format($row->service_eng_time); ?></td>
                                             </tr>
                                             <tr>
-                                        		<th>No. of Cards</th>
-                                                <td style="text-align: left;"></i><?php echo $row->no_of_cards; ?></td>
-                                                <th>Card Repairable</th>
-                                                <td style="text-align: left;"></i><?php echo $row->repairable_card; ?></td>
+                                        		<th>Testing Engineer</th>
+                                                <td style="text-align: left;"><?php echo isset($row->testing_engineer) && !empty($row->testing_engineer)?ucwords($row->testing_engineer):'---' ?></td>
+                                                <th>Time Assigned</th>
+                                                <td style="text-align: left;"><?php echo get_time_format($row->testing_eng_time); ?></td>
                                             </tr>
                                             <tr>
-                                        		<th>Card Dispatched</th>
-                                                <td style="text-align: left;"></i><?php echo $row->card_dispatched; ?></td>
-                                                <th>Card Balance</th>
-                                                <td style="text-align: left;"></i><?php echo $row->card_balance; ?></td>
+                                        		<th>Quality Engineer</th>
+                                                <td style="text-align: left;"><?php echo isset($row->quality_engineer) && !empty($row->quality_engineer)?ucwords($row->quality_engineer):'---' ?></td>
+                                                <th>Time Assigned</th>
+                                                <td style="text-align: left;"><?php echo get_time_format($row->quality_eng_time); ?></td>
+                                            </tr>
+                                            <tr>
+                                        		<th>Lead Engineer</th>
+                                                <td style="text-align: left;"><?php echo isset($row->lead_engineer) && !empty($row->lead_engineer)?ucwords($row->lead_engineer):'---' ?></td>
+                                                <th>Time Assigned</th>
+                                                <td style="text-align: left;"><?php echo get_time_format($row->lead_eng_time); ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Status</th>
@@ -1989,7 +1997,7 @@
                                                             <select required="" class="form-control" name="status_id">
                                                                 <option value="">Select Status</option>
                                                             <?php 
-                                                            foreach ($po_status as $key => $value) {?>
+                                                            foreach ($job_status as $key => $value) {?>
                                                                 <option <?= isset($row->status) && $row->status==$value->form_id?'selected':'' ?> value="<?php echo $value->form_id; ?>"><?php echo $value->name; ?></option>
                                                            <?php }?>
                                                             
@@ -2008,6 +2016,66 @@
 						</div> 
                         
 						<!-- End Master -->
+						<!--Additional Assignment-->
+						<div class="sub-division" id="mail">
+							<div class="form-row row-fluid">
+								<div class="form-actions">
+									<h3>Additional Assignment
+                                        <span class="pull-right "><a onclick='get_dynamic_form("Add Additional Assignment","job_additional_assignment",<?=$result->form_id;?>);' class="btn btn-xs btn-info add_mail_india_modal_btn"><i class="ace-icon fa fa-plus align-top bigger-125"></i> Add Additional Assignment</a>&nbsp;&nbsp;&nbsp;</span>
+                                    </h3>
+								</div>
+
+								<div class="master-container overflow-box">
+									<table class="responsive table ">
+										<thead>
+										  	<tr>
+												<th style="text-align: left;">S.No.</th>
+												<th style="text-align: left;">Service Engineer</th>
+												<th style="text-align: right;">Time Assigned</th>
+												<th style="text-align: left;">Testing Engineer</th>
+												<th style="text-align: right;">Time Assigned</th>
+												<th style="text-align: left;">Quality Engineer</th>
+												<th style="text-align: right;">Time Assigned</th>
+												<th style="text-align: left;">Lead Engineer</th>
+												<th style="text-align: right;">Time Assigned</th>
+												<th style="text-align: left;">Action</th>
+										  	</tr>
+										</thead>
+										<tbody>
+											<?php
+											if(isset($additional_assign) && !empty($additional_assign)){
+											$i = 1;foreach ($additional_assign as $key => $list) {
+											?>
+										  	<tr>
+												<td style="text-align: left;"><?=$i?></td>
+												<td style="text-align: left;"><?=ucwords($list->service_engineer_name)?></td>
+												<td style="text-align: right;"><?=get_time_format($list->service_eng_time)?></td>
+												<td style="text-align: left;"><?=ucwords($list->testing_engineer_name)?></td>
+												<td style="text-align: right;"><?=get_time_format($list->testing_eng_time)?></td>
+												<td style="text-align: left;"><?=ucwords($list->quality_engineer_name)?></td>
+												<td style="text-align: right;"><?=get_time_format($list->quality_eng_time)?></td>
+												<td style="text-align: left;"><?=ucwords($list->lead_engineer_name)?></td>
+												<td style="text-align: right;"><?=get_time_format($list->lead_eng_time)?></td>
+												<!-- <td style="text-align: left;"><?php //$list->added_by?></td> -->
+												<!-- <td style="text-align: left;"><?php //echo isset($list->created_time) && strtotime($list->created_time)?date('d/m/Y',strtotime($list->created_time)):'--/--/----' ?></td> -->
+												<!-- <td style="text-align: left;">---</td> -->
+												<td>
+													<a href="javascript:void(0)" class="" onclick="get_dynamic_edit_form(<?=$list->form_id;?>,<?=$list->job_id;?>,'job_additional_assignment','Edit Additional Assignment')"> <i class="fa fa-pencil-square-o"></i> </a>
+
+													<a href="<?php echo $module_url.'/delete_job_additional_assignment/'.$list->form_id.'/'.$list->job_id?>" class="" onclick="return confirm('Do you really want to delete this record?')"> <i class="fa fa-trash-o"></i> </a>
+													
+												</td>
+										  	</tr>
+										  	<?php
+											$i++;}}else{
+												echo "<tr><td style='text-align:center;color:red;' colspan='10'>No record found</td></tr>";
+											}?>
+										</tbody>
+					                </table>
+								</div>
+							</div>
+						</div>  
+						<!--Additional Assignment-->
 						<!--Internal Notes-->
 						<div class="sub-division" id="mail">
 							<div class="form-row row-fluid">
@@ -2018,14 +2086,14 @@
 								</div>
 
 								<div class="master-container overflow-box">
-									<table class="responsive table table-bordered">
+									<table class="responsive table ">
 										<thead>
 										  	<tr>
-												<th>S.No.</th>
-												<th>Subject </th>
-												<th>Description</th>
-												<th>Added By</th>
-												<th>Added On</th>
+												<th style="text-align: left;">S.No.</th>
+												<th style="text-align: left;">Subject </th>
+												<th style="text-align: left;">Description</th>
+												<th style="text-align: left;">Added By</th>
+												<th style="text-align: left;">Added On</th>
 										  	</tr>
 										</thead>
 										<tbody>
@@ -2059,55 +2127,7 @@
 						<!--Internal Notes-->
 						
 						
-						<!-- Start Mail -->
-						<div class="sub-division" id="mail">
-							<div class="form-row row-fluid">
-								<div class="form-actions">
-									<h3>Mails
-                                        <span class="pull-right "><a onclick='$("#mail_type").val(1);' data-toggle="modal" data-target="#add_mail_type" class="btn btn-xs btn-info add_mail_india_modal_btn"><i class="ace-icon fa fa-plus align-top bigger-125"></i> Add More Email</a>&nbsp;&nbsp;&nbsp;</span>
-                                    </h3>
-								</div>
 
-								<div class="master-container overflow-box">
-									<table class="responsive table table-bordered">
-										<thead>
-										  	<tr>
-												<th>From</th>
-												<th>To </th>
-												<th>Subject</th>
-												<th>Date</th>
-												<!-- <th>Size</th> -->
-												<th>Action</th>
-										  	</tr>
-										</thead>
-										<tbody>
-											<?php
-											if(isset($mail_lists) && !empty($mail_lists)){
-											foreach ($mail_lists as $mail_key => $mail_list) {
-											$i = 1;?>
-										  	<tr>
-												<td style="text-align: left;"><?=$mail_list->from?></td>
-												<td style="text-align: left;"><?=$mail_list->to?></td>
-												<td style="text-align: left;"><?=$mail_list->subject?></td>
-												<td style="text-align: left;"><?php echo isset($mail_list->mail_date) && strtotime($mail_list->mail_date)?date('d/m/Y',strtotime($mail_list->mail_date)):'--/--/----' ?></td>
-												<!-- <td style="text-align: left;">---</td> -->
-												<td>
-													<a target="_blank" href="<?=base_url('mail/'.$mail_list->type.'/view/'.$mail_list->id)?>" class="" > <i class="fa fa-eye"></i> </a>
-													
-												</td>
-										  	</tr>
-										  	<?php
-											}}else{
-												echo "<tr><td style='text-align:center;color:red;' colspan='5'>No record found</td></tr>";
-											}?>
-										</tbody>
-					                </table>
-								</div>
-							</div>
-						</div>  
-						<!-- End Mail -->
-
-						<!-- Start Mail -->
 						<div class="sub-division" id="conversation">
 							<div class="form-row row-fluid">
 								<div class="form-actions">
@@ -2208,126 +2228,91 @@
 						<div class="sub-division" id="product-info">
 							<div class="form-row row-fluid">
 								<div class="form-actions">
-									<h3>Jobs Info 
-                                        <?php if($is_india){ ?>
-                                        <span class="pull-right "><a href="<?=$module_url?>/add_po_product/<?=$result->form_id?>" class="btn btn-xs btn-info add_product_modal_btn"><i class="ace-icon fa fa-plus align-top bigger-125"></i> Add Product</a>&nbsp;&nbsp;&nbsp;</span>
-                                        <?php } ?>
-
-                                        <span class="pull-right "><a data-href="<?=$module_url?>/received_product/<?=$result->form_id?>" class="btn btn-xs btn-info received_product_btn"><i class="ace-icon fa fa-check align-top bigger-125"></i> Mark Freeze</a>&nbsp;&nbsp;&nbsp;</span>
-                                        <?php if($is_china){ ?>
-                                        <span class="pull-right "><a data-href="<?=$module_url?>/create_supplier_po/<?=$result->form_id?>" class="btn btn-xs btn-info create_supplier_po_btn"><i class="ace-icon fa fa-plus-square-o align-top bigger-125"></i> Create Supplier PO</a>&nbsp;&nbsp;&nbsp;</span>
-                                        <?php } ?>
-                                        
-                                        <?php if($is_china){ ?>
-                                        <span class="pull-right "><a data-href="<?=$module_url?>/download_supplier_po/<?=$result->form_id?>" class="btn btn-xs btn-info download_supplier_po_btn"><i class="ace-icon fa fa-download align-top bigger-125"></i> Download Supplier PO</a>&nbsp;&nbsp;&nbsp;</span>
-                                        <?php } ?>
-                                        <span class="pull-right" style="margin-right: 10px;">
-                                            <select id="po_no" class="nostyle" style="min-width: 100px;">
-                                                <option value="">Select PO Number</option>
-                                                <?php foreach ($total_supplier_po as $key => $supplier_po) {?>
-                                                    <option value="<?php echo $supplier_po->supplier_po ?>"><?php echo $supplier_po->supplier_po; ?> (<?=$supplier_po->supplier_country=='1'?'IND':'CHN'?>)</option>
-                                                <?php } ?>
-                                            </select>
-                                        </span>
+									<h3>Estimation 
+										<?php if(isset($job_estimation) && !empty($job_estimation)):?>
+                                        <span class="pull-right "><a href="<?=base_url('service/job/edit_estimation').'/'.$result->form_id.'/'.$job_estimation->form_id?>" class="btn btn-xs btn-info"><i class="ace-icon fa fa-pencil align-top bigger-125"></i> Edit Estimation</a>&nbsp;&nbsp;&nbsp;</span>
+                                        <?php else:?>
+                                    	<span class="pull-right "><a href="<?=base_url('service/job/add_estimation').'/'.$result->form_id?>" class="btn btn-xs btn-info"><i class="ace-icon fa fa-plus align-top bigger-125"></i> Add Estimation</a>&nbsp;&nbsp;&nbsp;</span>
+                                        <?php endif;?>
 									</h3>
 								</div>
-								<div class="product-wrapper overflow-box">
-									<table class="table" style="min-width: 250%">
-										<thead>
-											<tr>
+					<!-- Start Estimation -->
+						<div class="sub-division" id="master">
+							<div class="form-row row-fluid">
+								<div class="master-container overflow-box1">
+									<table class="responsive table table-bordered">
+                                        <?php 
+                                        if(isset($job_estimation) && !empty($job_estimation)){
+                                        $i = 1;?>
+                                        <tbody>
+                                            <tr>
+                                                <th style="background: transparent;width:13%;">Job No.</th>
+                                                <td style="text-align: left;width: 40%"><?php echo $row->inquiry_no.'-'.$row->job_sequence; ?></td>
+                                                <th style="width: 12%">Repairable</th>
+                                                <td style="text-align: left;"><?php echo isset($job_estimation->repairable) && !empty($job_estimation->repairable) && $job_estimation->repairable==1?'Yes':'No' ?></td>
+                                            </tr>
+                                            <tr>
 
-                                                <th  class="ch" width="3%">
-                                                    <input type="checkbox" name="allCheckbox" value="all" class="checkall">
-                                                </th>
-                                                <?php if($is_india){ ?>
-                                                <th>Action</th>
-                                                <?php } ?>
-												<th style="width: 90px;">Communication ID</th>
-                                                <!-- <th style="width: 90px;">Supplier PO</th> -->
-                                                <th style="width: 90px;">Freeze</th>
-                                                <th style="width: 90px;">India Status</th>
-                                                <?php if($is_india){?>
-												<th>Client Description</th>
-                                                <?php } ?>
-												<th style="width: 50px;">Qty</th>
-												<th style="width: 130px;">Basic Amount</th>
-												<th style="width: 130px;">Total Amount</th>
-												<th>Inch Description</th>
-												<th>Inv. Description</th>
-                                                <th style="width: 150px;">Source</th>
-                                                <th style="width: 150px;">Supplier Name</th>
-                                                <th style="width: 150px;">Supplier Invoice No.</th>
-                                                <th style="width: 150px;">Supplier Invoice Dated</th>
-                                                <th style="width: 150px;">Supplier Invoice GST</th>
-                                                <th style="width: 150px;">Currency</th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php 
-											if(isset($product_listt) && !empty($product_list))
-											{
-											$i=1;
-											foreach ($product_list as $p_key => $product) {?>
-												<tr>
-                                                    <td  class="ch" width="3%">
-                                                        <?php if(!$product->supplier_po_seq>0){ ?>
-                                                        <input type="checkbox" value="<?=$product->form_id?>" class="record_checkbox"/>
-                                                    <?php } ?>
-                                                    </td>
-                                                    <?php if($is_india){ ?>
-                                                    <td>
-                                                        <a href="<?=$module_url.'/delete_product/'.$product->form_id.'/'.$result->form_id?>" class="delete" onclick=" return confirm('Are you really want to delete?')"> <i class="fa fa-trash-o"></i> </a>
-                                                        <?php if($product->is_freeze!=1){?>
-                                                        <a title="Edit product with supplier details" href="<?=$module_url.'/edit_po_product/'.$product->form_id.'/'.$result->form_id?>"><i class="fa fa-pencil-square-o"></i> </a>
-                                                    	<?php }?>
-                                                        
-                                                    </td>
-                                                    <?php } ?>
-													<td><?php echo $product->enquiry_id.'-'.$product->product_sequence?></td>
-                                                    <!-- <td><?php echo isset($product->supplier_po) && !empty($product->supplier_po)?$product->supplier_po:'---' ?></td> -->
-                                                    <td>
-                                                    <?php if($product->is_freeze==1){?>
-                                                        <label style="display: unset;font-weight:400 !important" class="label label-success"><i class="fa fa-check"></i> Frozen</label>
-                                                    <?php }else{ ?>
-                                                            <input type="checkbox" value="<?=$product->form_id?>" class="is_received_checkbox"/>
-                                                        <?php } ?>
-                                                    </td>
-                                                    <td style="text-align: left;width: 90px;">
-	                                                    <form style="margin:unset;" action="<?=current_url()?>" method="post" accept-charset="utf-8" class="form-horizontal" enctype="multipart/form-data">
-	                                                            <select required="" class="form-control" name="status_id_india" id="status_id_india">
-	                                                                <option value="">Select Status</option>
-	                                                            <?php 
-	                                                            foreach ($order_status_india_master as $key => $value) {?>
-	                                                                <option <?= isset($product->india_status) && $product->india_status==$value->form_id?'selected':'' ?> value="<?php echo $value->form_id; ?>"><?php echo $value->name; ?></option>
-	                                                           <?php }?>
-	                                                            
-	                                                        </select>
-	                                                        <input type="hidden" name="product_id" value="<?=$product->form_id?>">
-	                                                        <input type="hidden" name="<?=$this->config->item('csrf_token_name')?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-	                                                    </form>
-                                                	</td>
-                                                    <?php if($is_india){?>
-													<td style="text-align: left;"><?php echo $product->description_issued_by_customer ?></td>
-                                                    <?php } ?>
-													<td style="text-align: left;"><?php echo $product->qty ?></td>	
-													<td style="text-align: left;"><?php echo $product->po_total_basic ?></td>
-													<td style="text-align: left;"><?php echo $product->total_price_with_tax ?></td>
-													<td style="text-align: left;"><?php echo $product->description_issued_by_inch ?></td>
-                                                    <td style="text-align: left;"><?php echo $product->inv_description ?></td>
-                                                    <td style="text-align: left;"><?php echo $product->supplier_country==1?'India':($product->supplier_country==2?'CFIT':'CFIT & India'); ?></td>
-                                                    <td style="text-align: left;"><?php echo $product->supplier_name ?></td>
-                                                    <td style="text-align: left;"><?php echo $product->unit_price ?></td>
-                                                    <td style="text-align: left;"><?php echo $product->unit_price_with_tax ?></td>
-                                                    <td style="text-align: left;"><?php echo $product->vat ?></td>
-                                                    <td style="text-align: left;"><?php echo $product->total_price_with_tax ?></td>
-												</tr>
-											<?php }
-											}else{
-                                                echo "<tr><td style='color:red;text-align:center' colspan='22'>No product found</td></tr>";
-                                            } ?>
-										</tbody>
-									</table>
+                                                <th>Service Level</th>
+                                                <td style="text-align: left;"><?php echo $job_estimation->service_level=='1'?'Starter':($job_estimation->service_level=='2'?'Moderate':'Expert') ?></td>
+                                                <th style="background: transparent;">Service Time</th>
+                                                <td style="text-align: left;"><?php echo isset($job_estimation->service_time) && !empty($job_estimation->service_time)?get_time_format($job_estimation->service_time):'---' ?></td>
+                                            </tr>
+                                            <tr>
+
+                                                <th>Testing Level</th>
+                                                <td style="text-align: left;"><?php echo $job_estimation->testing_level=='1'?'Starter':($job_estimation->testing_level=='2'?'Moderate':'Expert') ?></td>
+                                                <th style="background: transparent;">Testing Time</th>
+                                                <td style="text-align: left;"><?php echo isset($job_estimation->testing_time) && !empty($job_estimation->testing_time)?get_time_format($job_estimation->testing_time):'---' ?></td>
+                                            </tr>
+                                            <tr>
+
+                                                <th>Quality Level</th>
+                                                <td style="text-align: left;"><?php echo $job_estimation->quality_level=='1'?'Starter':($job_estimation->quality_level=='2'?'Moderate':'Expert') ?></td>
+                                                <th style="background: transparent;">Quality Time</th>
+                                                <td style="text-align: left;"><?php echo isset($job_estimation->quality_time) && !empty($job_estimation->quality_time)?get_time_format($job_estimation->quality_time):'---' ?></td>
+                                            </tr>
+                                            <tr>
+
+                                                <th>Lead Level</th>
+                                                <td style="text-align: left;"><?php echo $job_estimation->lead_level=='1'?'Starter':($job_estimation->lead_level=='2'?'Moderate':'Expert') ?></td>
+                                                <th style="background: transparent;">Lead Time</th>
+                                                <td style="text-align: left;"><?php echo isset($job_estimation->lead_time) && !empty($job_estimation->lead_time)?get_time_format($job_estimation->lead_time):'---' ?></td>
+                                            </tr>
+                                            <tr>
+
+                                                <th>Offloading</th>
+                                                <td style="text-align: left;"><?php echo $job_estimation->offloading=='1'?'Yes':($job_estimation->offloading=='2'?'No':'---') ?></td>
+                                                <th style="background: transparent;">Offloading Cost</th>
+                                                <td style="text-align: left;"><?php echo isset($job_estimation->offloading_cost) && !empty($job_estimation->offloading_cost)?number_format($job_estimation->offloading_cost,'2','.',','):'---' ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Components</th>
+                                                <td style="text-align: left;"><?php echo ucfirst($job_estimation->components); ?></td>
+                                                <th style="background: transparent;">Components Cost</th>
+                                                <td style="text-align: left;"><?php echo isset($job_estimation->components_cost) && !empty($job_estimation->components_cost)?number_format($job_estimation->components_cost,'2','.',','):'---' ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Remarks</th>
+                                                <td style="text-align: left;"><?php echo ucfirst($job_estimation->remarks); ?></td>
+                                                <th style="background: transparent;">Approx. Cost</th>
+                                                <td style="text-align: left;"><?php echo isset($job_estimation->approximate_cost) && !empty($job_estimation->approximate_cost)?number_format($job_estimation->approximate_cost,'2','.',','):'---' ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Original Reference</th>
+                                                <td style="text-align: left;"><?php echo ucfirst($job_estimation->original_ref); ?></td>
+                                                <th style="background: transparent;">Original Cost</th>
+                                                <td style="text-align: left;"><?php echo isset($job_estimation->original_cost) && !empty($job_estimation->original_cost)?number_format($job_estimation->original_cost,'2','.',','):'---' ?></td>
+                                            </tr>
+                                        </tbody>
+                                        <?php } ?>
+                                        </tbody>
+					                </table>
 								</div>
+							</div>
+						</div> 
+                        
+						<!-- End Estimation -->
 							</div>
 						</div>  
 						<!-- End Product Info  -->
@@ -2336,36 +2321,57 @@
 						<div class="sub-division" id="mail">
 							<div class="form-row row-fluid">
 								<div class="form-actions">
-									<h3>Estimation
-										<!-- <span class="pull-right "><a onclick='get_products_list(<?=$result->form_id?>,1);' class="btn btn-xs btn-info add_mail_india_modal_btn"><i class="ace-icon fa fa-plus align-top bigger-125"></i> Add Contract</a>&nbsp;&nbsp;&nbsp;</span> -->
+									<h3>In / Out
+										<?php if(isset($in_out_details[0]->in_date) && !empty($in_out_details[0]->in_date)):?>
+											<span class="pull-right "><a href="javascript:void(0)" class="btn btn-xs btn-info" onclick="add_in_out();"><i class="ace-icon fa fa-plus align-top bigger-125"></i> Add</a>&nbsp;&nbsp;&nbsp;</span>
+										<?php endif;?>
                                     </h3>
 								</div>
 
 								<div class="master-container overflow-box">
-									<table class="responsive table table-bordered">
+									<table class="responsive table">
 										<thead>
 										  	<tr>
-												<th>S.No.</th>
-												<th>Payment </th>
-												<th>Date</th>
-												<!-- <th>Size</th> -->
-												<th>Action</th>
+												<th style="text-align: left;">S.No.</th>
+												<th style="text-align: left;">Issuer </th>
+												<th style="text-align: left;">Employee ID</th>
+												<th style="text-align: left;">Purpose</th>
+												<th style="text-align: left;">Out Date/Time</th>
+												<th style="text-align: left;">In Date/Time</th>
+												<th style="text-align: left;">Time taken</th>
+												<th style="text-align: left;">Remarks</th>
+												<th style="text-align: left;">Action</th>
 										  	</tr>
 										</thead>
 										<tbody>
 											<?php
-											if(isset($invoice_list) && !empty($invoice_list)){
-											$i = 1;foreach ($payment_list as $key => $list) {
+											if(isset($in_out_details) && !empty($in_out_details))
+											{
+												$i = 1;foreach ($in_out_details as $key => $list) {
 											?>
 										  	<tr>
 												<td style="text-align: left;"><?=$i?></td>
-												<td style="text-align: left;"><?=$list->payment?></td>
-												<td style="text-align: left;"><?php echo isset($list->payment_date) && strtotime($list->payment_date)?date('d/m/Y',strtotime($list->payment_date)):'--/--/----' ?></td>
+												<td style="text-align: left;"><?=$list->issuer_name?></td>
+												<td style="text-align: left;"><?=$list->employee_id?></td>
+												<td style="text-align: left;"><?=$list->purpose?></td>
+												<td style="text-align: left;"><?php echo isset($list->out_date) && strtotime($list->out_date)?date('d/m/Y h:i a',strtotime($list->out_date)):'--/--/----' ?></td>
+												<td style="text-align: left;"><?php echo isset($list->in_date) && strtotime($list->in_date)?date('d/m/Y h:i a',strtotime($list->in_date)):'--/--/----' ?></td>
+												<td style="text-align: left;">
+													<?php $out_date = new DateTime($list->out_date)?>
+													<?php $in_date = new DateTime($list->in_date)?>
+													<?php $diff_date = $out_date->diff($in_date);?>
+													<?=$diff_date->format('%a')." Days ".$diff_date->format('%h')." Hours ".$diff_date->format('%i')." Minutes";?>
+												</td>
 												<!-- <td style="text-align: left;">---</td> -->
+												<td style="text-align: left;"><?=$list->remarks?></td>
 												<td>
-													<a href="javascript:void(0)" class="" onclick="get_dynamic_edit_form(<?=$list->form_id;?>,<?=$list->order_id;?>,'payment_details','Edit Payment Details')"> <i class="fa fa-pencil-square-o"></i> </a>
-
-													<a href="<?=$module_url.'/delete_payment_details/'.$list->form_id.'/'.$list->order_id?>" class="" onclick="return confirm('Do you really want to delete this record?')"> <i class="fa fa-trash-o"></i> </a>
+													<?php if(!isset($list->in_date) || empty($list->in_date)):?>
+													<a href="<?=$module_url.'/add_in_detail/'.$list->form_id.'/'.$list->job_id?>" class="text-none"> <label class="label label-warning pointer">IN</label>
+													</a>
+													<?php else:?>
+														<label class="label label-success">In Store</label>
+													<?php endif;?>
+													<!-- <a href="<?php //$module_url.'/delete_in_out_details/'.$list->form_id.'/'.$list->job_id?>" class="" onclick="return confirm('Do you really want to delete this record?')"> <i class="fa fa-trash-o"></i> </a> -->
 													
 												</td>
 										  	</tr>
@@ -2383,42 +2389,42 @@
 						<div class="sub-division" id="mail">
 							<div class="form-row row-fluid">
 								<div class="form-actions">
-									<h3>Offer Terms
+									<h3>Store Issue
 										<!-- <span class="pull-right "><a onclick='get_products_list(<?=$row->form_id?>,2);'  class="btn btn-xs btn-info add_mail_india_modal_btn"><i class="ace-icon fa fa-plus align-top bigger-125"></i> Add Contract</a>&nbsp;&nbsp;&nbsp;</span> -->
                                     </h3>
 								</div>
 
 								<div class="master-container overflow-box">
-									<table class="responsive table table-bordered">
+									<table class="responsive table ">
 										<thead>
 										  	<tr>
 												<th>S.No.</th>
-												<th>Payment </th>
-												<th>Date</th>
-												<!-- <th>Size</th> -->
-												<th>Action</th>
+												<th style="text-align: left;">Name </th>
+												<th style="text-align: left;">UPC</th>
+												<th style="text-align: left;">Product Name</th>
+												<th style="text-align: left;">Description</th>
+												<th style="text-align: left;">Order ID</th>
+												<th style="text-align: left;">Qty</th>
 										  	</tr>
 										</thead>
 										<tbody>
 											<?php
-											if(isset($invoice_list) && !empty($invoice_list)){
-											$i = 1;foreach ($payment_list as $key => $list) {
+											if(isset($store_issue_list) && !empty($store_issue_list)){
+											$i = 1;foreach ($store_issue_list as $key => $list) {
 											?>
 										  	<tr>
 												<td style="text-align: left;"><?=$i?></td>
-												<td style="text-align: left;"><?=$list->payment?></td>
-												<td style="text-align: left;"><?php echo isset($list->payment_date) && strtotime($list->payment_date)?date('d/m/Y',strtotime($list->payment_date)):'--/--/----' ?></td>
+												<td style="text-align: left;"><?=ucwords($list->customer_name)?></td>
+												<td style="text-align: left;"><?=ucwords($list->upc)?></td>
+												<td style="text-align: left;"><?=ucwords($list->name)?></td>
+												<td style="text-align: left;"><?=ucwords($list->model)?></td>
+												<td style="text-align: left;"><?=$list->order_id?></td>
+												<td style="text-align: left;"><?=$list->quantity?></td>
 												<!-- <td style="text-align: left;">---</td> -->
-												<td>
-													<a href="javascript:void(0)" class="" onclick="get_dynamic_edit_form(<?=$list->form_id;?>,<?=$list->order_id;?>,'payment_details','Edit Payment Details')"> <i class="fa fa-pencil-square-o"></i> </a>
-
-													<a href="<?=$module_url.'/delete_payment_details/'.$list->form_id.'/'.$list->order_id?>" class="" onclick="return confirm('Do you really want to delete this record?')"> <i class="fa fa-trash-o"></i> </a>
-													
-												</td>
 										  	</tr>
 										  	<?php
 											$i++;}}else{
-												echo "<tr><td style='text-align:center;color:red;' colspan='5'>No record found</td></tr>";
+												echo "<tr><td style='text-align:center;color:red;' colspan='7'>No record found</td></tr>";
 											}?>
 										</tbody>
 					                </table>
@@ -2431,20 +2437,170 @@
 						<div class="sub-division" id="mail">
 							<div class="form-row row-fluid">
 								<div class="form-actions">
-									<h3>Offer
+									<h3>Store Requirements
+										<span class="pull-right "><a href="<?=base_url('service/job/add_requirements').'/'.$result->form_id?>" class="btn btn-xs btn-info"><i class="ace-icon fa fa-plus align-top bigger-125"></i> Add Store Requirements</a>&nbsp;&nbsp;&nbsp;</span>
+                                    </h3>
+								</div>
+
+								<div class="master-container overflow-box">
+									<table class="responsive table"  style="min-width: 150%">
+										<thead>
+										  	<tr>
+												<th>S.No.</th>
+												<th style="text-align: left;">Name </th>
+												<th style="text-align: left;">New/Existing</th>
+												<th style="text-align: left;">UPC</th>
+												<th style="text-align: left;">Req. Date</th>
+												<th style="text-align: left;">Req. No.</th>
+												<th style="text-align: left;">Category</th>
+												<th style="text-align: left;">Sub Category</th>
+												<th style="text-align: left;">Specification</th>
+												<th style="text-align: left;">Qty</th>
+												<th style="text-align: left;">Req.</th>
+												<th style="text-align: left;">Ref Price</th>
+												<th style="text-align: left;">Total Price</th>
+												<th style="text-align: left;">Supplier Name</th>
+												<!-- <th>Status</th> -->
+												<th>Action</th>
+										  	</tr>
+										</thead>
+										<tbody>
+											<?php
+											if(isset($store_requirements) && !empty($store_requirements)){
+											$i = 1;
+											$total_req = count($store_requirements);
+											foreach ($store_requirements as $key => $list) {
+											?>
+										  	<tr>
+												<td style="text-align: left;"><?=$i?></td>
+												<td style="text-align: left;"><?=ucwords($list->added_by)?></td>
+												<td style="text-align: left;"><?php echo isset($list->new_or_exist) && !empty($list->new_or_exist)?($list->new_or_exist==1?'New':'Existing'):'--' ?></td>
+												<td style="text-align: left;"><?php echo isset($list->upc) && !empty($list->upc)?$list->upc:'--' ?></td>
+												<td style="text-align: left;"><?php echo isset($list->created_time) && !empty($list->created_time)?date('d/m/Y',strtotime($list->created_time)):'--' ?></td>
+												<?php $req_no = $total_req-($i-1);?>
+												<td style="text-align: left;"><?=$list->job_name.'-'.$req_no?></td>
+												<td style="text-align: left;"><?php echo isset($list->category) && !empty($list->category)?$list->category:'--' ?></td>
+												<td style="text-align: left;"><?php echo isset($list->sub_cat) && !empty($list->sub_cat)?$list->sub_cat:'--' ?></td>
+												<td style="text-align: left;" title="<?=$list->specification?>"><?php echo isset($list->specification) && !empty($list->specification)?(strlen($list->specification)>100?substr($list->specification, 0,100):$list->specification):'--' ?></td>
+												<td style="text-align: left;"><?php echo isset($list->qty) && !empty($list->qty)?$list->qty:'--' ?></td>
+												<td style="text-align: left;"><?php echo isset($list->requirement) && !empty($list->requirement)?$list->requirement:'--' ?></td>
+												<td style="text-align: left;"><?php echo isset($list->ref_price) && !empty($list->ref_price)?number_format($list->ref_price,'2','.',','):'--' ?></td>
+												<td style="text-align: left;"><?php echo isset($list->total_price) && !empty($list->total_price)?number_format($list->total_price,'2','.',','):'--' ?></td>
+												<td style="text-align: left;"><?php echo isset($list->supplier_name) && !empty($list->supplier_name)?$list->supplier_name:'--' ?></td>
+												<td>
+													<a href="<?=$module_url.'/edit_store_requirements/'.$list->form_id.'/'.$result->form_id?>" class=""> <i class="fa fa-pencil-square-o"></i> </a>
+
+													<a href="<?=$module_url.'/delete_store_requirements/'.$list->form_id.'/'.$result->form_id?>" class="" onclick="return confirm('Do you really want to delete this record?')"> <i class="fa fa-trash-o"></i> </a>
+													
+												</td>
+										  	</tr>
+										  	<?php
+											$i++;}}else{
+												echo "<tr><td style='text-align:center;color:red;' colspan='16'>No record found</td></tr>";
+											}?>
+										</tbody>
+					                </table>
+								</div>
+							</div>
+						</div>  
+                        <!-- Offer -->
+
+                        <!-- Contract -->
+						<div class="sub-division" id="mail">
+							<div class="form-row row-fluid">
+								<div class="form-actions">
+									<h3>Contract Info India
+                                        <span class="pull-right "><a data-href="<?=$module_url?>/unfreeze_contract/<?=$result->form_id?>" class="btn btn-xs btn-info received_product_btn"><i class="ace-icon fa fa-hand-o-right align-top bigger-125"></i> Un-Freeze</a>&nbsp;&nbsp;&nbsp;</span>
+										<span class="pull-right "><a data-href="<?=$module_url?>/freeze_contract/<?=$result->form_id?>" class="btn btn-sm btn-info received_product_btn"><i class="ace-icon fa fa-hand-o-left align-top bigger-125"></i> Freeze</a>&nbsp;&nbsp;&nbsp;</span>
+										<span class="pull-right "><a href="<?=base_url('service/job/add_contract').'/'.$result->form_id?>" class="btn btn-xs btn-info"><i class="ace-icon fa fa-plus align-top bigger-125"></i> Add Contract</a>&nbsp;&nbsp;&nbsp;</span>
+                                    </h3>
+								</div>
+
+								<div class="master-container overflow-box">
+									<table class="responsive table">
+										<thead>
+										  	<tr>
+										  		<th  class="ch" width="3%">
+                                                    <input type="checkbox" name="allCheckbox" value="all" class="checkall">
+                                                </th>
+												<th>S.No.</th>
+												<th style="text-align: left;">Contract Name</th>
+												<th style="text-align: left;">Supplier Name</th>
+												<th style="text-align: left;">Qty</th>
+												<th style="text-align: left;">Unit Price</th>
+												<th style="text-align: left;">Total Price</th>
+												<th style="text-align: left;">Delivery</th>
+												<th style="text-align: left;">Status</th>
+												<th style="text-align: left;">Date</th>
+												<th style="text-align: left;">Freeze</th>
+												<th style="text-align: left;">Action</th>
+										  	</tr>
+										</thead>
+										<tbody>
+											<?php
+											if(isset($contract) && !empty($contract)){
+											$i = 1;foreach ($contract as $key => $list){
+											?>
+										  	<tr>
+										  		<td  class="ch" width="3%">
+                                                    <input type="checkbox" value="<?=$list->form_id?>" class="record_checkbox"/>
+                                                </td>
+												<td style="text-align: left;"><?=$i?></td>
+												<td style="text-align: left;"><?=$list->contract_name?></td>
+												<td style="text-align: left;"><?=$list->supplier_name?></td>
+												<td style="text-align: left;"><?=isset($list->qty) && !empty($list->qty)?$list->qty:'--'?></td>
+												<td style="text-align: left;"><?=number_format($list->unit_price,'2','.',',')?></td>
+												<td style="text-align: left;"><?=number_format($list->total_price,'2','.',',')?></td>
+												<td style="text-align: left;" title="<?=$list->delivery_terms?>"><?=strlen($list->delivery_terms)>150?substr($list->delivery_terms,0,150).'...':$list->delivery_terms?></td>
+												<td style="text-align: left;"><?=isset($list->status) && !empty($list->status)?$list->status:'--'?></td>
+												<td style="text-align: left;"><?php echo isset($list->created_time) && strtotime($list->created_time)?date('d/m/Y',strtotime($list->created_time)):'--/--/----' ?>
+												</td>
+												<td>
+													<?php if($list->is_freeze==1){?>
+                                                        <label style="display: unset;font-weight:400 !important" class="label label-success"><i class="fa fa-check"></i> Frozen</label>
+                                                    <?php }else{?>
+                                                    	---
+                                                    <?php }?>
+												</td>
+												<td>
+													<a href="<?=$module_url.'/edit_contract/'.$list->form_id.'/'.$list->job_id?>" class=""> <i class="fa fa-pencil-square-o"></i> </a>
+
+													<a href="<?=$module_url.'/delete_contract/'.$list->form_id.'/'.$list->job_id?>" class="" onclick="return confirm('Do you really want to delete this record?')"> <i class="fa fa-trash-o"></i> </a>
+													
+												</td>
+										  	</tr>
+										  	<?php
+											$i++;}}else{
+												echo "<tr><td style='text-align:center;color:red;' colspan='16'>No record found</td></tr>";
+											}?>
+										</tbody>
+					                </table>
+								</div>
+							</div>
+						</div>  
+                        <!-- Contract -->
+                        <!-- Manhour Cost -->
+						<div class="sub-division" id="mail">
+							<div class="form-row row-fluid">
+								<div class="form-actions">
+									<h3>Manhour Cost
 										<!-- <span class="pull-right "><a onclick='get_products_list(<?=$row->form_id?>,2);'  class="btn btn-xs btn-info add_mail_india_modal_btn"><i class="ace-icon fa fa-plus align-top bigger-125"></i> Add Contract</a>&nbsp;&nbsp;&nbsp;</span> -->
                                     </h3>
 								</div>
 
 								<div class="master-container overflow-box">
-									<table class="responsive table table-bordered">
+									<table class="responsive table">
 										<thead>
 										  	<tr>
 												<th>S.No.</th>
-												<th>Payment </th>
+												<th>Contract Name</th>
+												<th>Supplier Name</th>
+												<th>Qty</th>
+												<th>Unit Price</th>
+												<th>Total Price</th>
+												<th>Delivery</th>
+												<th>Status</th>
 												<th>Date</th>
-												<!-- <th>Size</th> -->
-												<th>Action</th>
 										  	</tr>
 										</thead>
 										<tbody>
@@ -2466,68 +2622,115 @@
 										  	</tr>
 										  	<?php
 											$i++;}}else{
-												echo "<tr><td style='text-align:center;color:red;' colspan='5'>No record found</td></tr>";
+												echo "<tr><td style='text-align:center;color:red;' colspan='16'>No record found</td></tr>";
 											}?>
 										</tbody>
 					                </table>
 								</div>
 							</div>
 						</div>  
-                        <!-- Offer -->
-
-						<!-- Start Transalation -->
-						<div class="sub-division" id="transalation">
+                        <!-- Manhour Cost -->
+                        <!-- Offloading Cost -->
+						<div class="sub-division" id="mail">
 							<div class="form-row row-fluid">
 								<div class="form-actions">
-									<h3>Translation</h3>
-                                    <a data-toggle="modal" data-target="#edit_product_china_modal"  class="hide" id="edit_product_china_modal_event"></a>
+									<h3>Offloading Cost
+										<!-- <span class="pull-right "><a onclick='get_products_list(<?=$row->form_id?>,2);'  class="btn btn-xs btn-info add_mail_india_modal_btn"><i class="ace-icon fa fa-plus align-top bigger-125"></i> Add Contract</a>&nbsp;&nbsp;&nbsp;</span> -->
+                                    </h3>
 								</div>
-								<div class="product-wrapper">
-									<table class="table">
+
+								<div class="master-container overflow-box">
+									<table class="responsive table">
 										<thead>
-											<tr>
-												<th style="width: 90px;">Order ID</th>
-												<th>Description issued by Customer</th>
-												<th>Description issued by Inch</th>
-												<th>Make issued by Inch</th>
-												<th>Qty</th>
-												<th>UOM</th>
-												<th>Description issued by CFIT</th>
-												<th>Make issued by CFIT</th>
-                                                <?php if($is_china){ ?>
-                                                <th>Action</th>
-                                                <?php } ?>
-											</tr>
+										  	<tr>
+												<th>S.No.</th>
+												<th style="text-align: left;">Supplier Name</th>
+												<th style="text-align: left;">Invoice No.</th>
+												<th style="text-align: left;">Invoice Date</th>
+												<th style="text-align: left;">Basic Amount</th>
+												<th style="text-align: left;">Total Amount</th>
+												<!-- <th>Delivery</th> -->
+												<!-- <th>Status</th> -->
+												<!-- <th>Date</th> -->
+										  	</tr>
 										</thead>
 										<tbody>
-											<?php 
-											if(isset($product_list) && !empty($product_list))
-											{
-											$i=1;
-											foreach ($product_list as $p_key => $product) {?>
-												<tr>
-													<td><?php echo $result->po_no.'-'.$i++ ?></td>
-													<td style="text-align: left;"><?php echo $product->description_issued_by_customer ?></td>
-													<td style="text-align: left;"><?php echo $product->description_issued_by_inch ?></td>
-													<td style="text-align: left;"><?php echo $product->make_issue_inch ?></td>
-													<td><?php echo $product->qty ?></td>
-													<td style="text-align: left;"><?php echo $product->unit_name ?></td>
-													<td style="text-align: left;"><?php echo isset($product->description_issued_by_cfit) && !empty($product->description_issued_by_cfit)?$product->description_issued_by_cfit:'---' ?></td>
-                                                    <td style="text-align: left;"><?php echo isset($product->make_issue_cfit) && !empty($product->make_issue_cfit)?$product->make_issue_cfit:'---' ?></td>
-                                                    <?php if($is_china){ ?>
-                                                    <td>
-                                                        <a href="javascript:void(0)" data-href="<?=$module_url.'/edit_product_china/'.$product->form_id.'/'.$result->form_id?>" data-id="<?=$product->form_id?>" class="edit_product_china_modal_btn"> <i class="fa fa-pencil-square-o"></i> </a> 
-                                                    </td>
-                                                    <?php } ?>
-												</tr>
-											<?php }}else{
-                                                echo "<tr><td style='color:red;text-align:center' colspan='9'>No record found</td></tr>";
-                                            } ?>
+											<?php
+											if(isset($contract) && !empty($contract)){
+											$i = 1;foreach ($contract as $key => $list) {
+											?>
+										  	<tr>
+												<td style="text-align: left;"><?=$i?></td>
+												<td style="text-align: left;"><?=$list->contract_name?></td>
+												<td style="text-align: left;"><?=$list->supplier_invoice_no?></td>
+												<td style="text-align: left;"><?php echo isset($list->supplier_date) && strtotime($list->supplier_date)?date('d/m/Y',strtotime($list->supplier_date)):'--/--/----' ?></td>
+												<!-- <td style="text-align: left;">---</td> -->
+												<td style="text-align: left;"><?=number_format($list->contract_basic,'2','.',',')?></td>
+												<td style="text-align: left;"><?=number_format($list->contract_amount,'2','.',',')?></td>
+										  	</tr>
+										  	<?php
+											$i++;}}else{
+												echo "<tr><td style='text-align:center;color:red;' colspan='16'>No record found</td></tr>";
+											}?>
 										</tbody>
-									</table>
+					                </table>
 								</div>
 							</div>
 						</div>  
+                        <!-- Offloading Cost -->
+                        <!-- Components Cost -->
+						<div class="sub-division" id="mail">
+							<div class="form-row row-fluid">
+								<div class="form-actions">
+									<h3>Components Cost
+										<!-- <span class="pull-right "><a onclick='get_products_list(<?=$row->form_id?>,2);'  class="btn btn-xs btn-info add_mail_india_modal_btn"><i class="ace-icon fa fa-plus align-top bigger-125"></i> Add Contract</a>&nbsp;&nbsp;&nbsp;</span> -->
+                                    </h3>
+								</div>
+
+								<div class="master-container overflow-box">
+									<table class="responsive table">
+										<thead>
+										  	<tr>
+												<th>S.No.</th>
+												<th  style="text-align: left;">Name/Emp Code</th>
+												<th  style="text-align: left;">UPC</th>
+												<th  style="text-align: left;">Qty</th>
+												<th  style="text-align: left;">Cost</th>
+												<th  style="text-align: left;">Total Cost</th>
+										  	</tr>
+										</thead>
+										<tbody>
+											<?php
+											// pr($store_issue_list);
+											$total = 0;
+											if(isset($store_issue_list) && !empty($store_issue_list)){
+											$i = 1;foreach ($store_issue_list as $key => $list) {
+												$total += $list->total;
+											?>
+										  	<tr>
+												<td style="text-align: left;"><?=$i?></td>
+												<td style="text-align: left;"><?=ucwords($list->customer_name)?></td>
+												<td style="text-align: left;"><?=ucwords($list->upc)?></td>
+												<td style="text-align: left;"><?=$list->quantity?></td>
+												<td style="text-align: left;"><?=number_format($list->price,'2','.',',')?></td>
+												<td style="text-align: left;"><?=number_format($list->total,'2','.',',')?></td>
+										  	</tr>
+										  	<?php
+											$i++;}?>
+											<tr>
+												<td colspan="5">Total: </td>
+												<td  style="text-align: left;"><b><?=number_format($total,'2','.',',')?></b></td>
+											</tr>
+											<?php }else{
+												echo "<tr><td style='text-align:center;color:red;' colspan='6'>No record found</td></tr>";
+											}?>
+										</tbody>
+					                </table>
+								</div>
+							</div>
+						</div>  
+                        <!-- Components Cost -->
+						  
 					</div><!--content-->
 				</div><!--box-->
 		</div><!--span9-->
@@ -3319,12 +3522,12 @@
 </div>
 <!-- Payment Details -->
 <!-- CONTTRACT PRODUCTS -->
-<div class="modal fade modal-lg product_modal" id="contract_products_modal" style="width:850px;margin-left: -425px;"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade modal-lg product_modal" id="in_out_modal" style="width:850px;margin-left: -425px;"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   	<div class="modal-dialog">
 		<div class="modal-content">
 		  	<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
-				<h4 class="modal-title" id="myModalLabel">Add Contract</h4>
+				<h4 class="modal-title" id="myModalLabel">Add IN/OUT</h4>
 		  	</div>
 		  	<div class="modal-body payment_details_body">
 
@@ -3332,20 +3535,26 @@
                     <div class="span12">
                         <div class="portlet box blue">
                             <div class="content">
-                                <form action="<?=$module_url?>/add_contract/<?=$result->form_id?>" method="post" accept-charset="utf-8" class="form-horizontal" id="contract_form" enctype="multipart/form-data">
+                                <form action="<?=$module_url?>/add_in_out/<?=$result->form_id?>" method="post" accept-charset="utf-8" class="form-horizontal" id="contract_form" enctype="multipart/form-data">
                                     <div class="portlet-body" style="padding: 5px;">
                                         <div class="form-row row-fluid m-b-10">
-                                            <div class="span12">
+                                            <div class="span6">
                                                 <div class="span5">
-                                                    <label for="age" class="form-label">Select Products<em>*</em></label>
+                                                    <label for="age" class="form-label">Purpose<em>*</em></label>
                                                 </div>
                                                 <div class="span7">
-                                                    <select name="products[]" id="contract_products" class="assign_group_multiselect" multiple></select>
-
+                                                	<textarea name="purpose" class="purpose"></textarea>
                                                     <input type="hidden" name="<?=$this->config->item('csrf_token_name')?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-                                                    <input type="hidden" name="order_id" id="order_id_contract" value="<?=$result->form_id?>">
-                                                    <input type="hidden" name="product_source" id="product_source">
                                                     <div class="error" id="error_description_issued_by_customer"></div>
+                                                </div>
+                                            </div>
+                                            <div class="span6">
+                                                <div class="span5">
+                                                    <label for="age" class="form-label">Remarks<em>*</em></label>
+                                                </div>
+                                                <div class="span7">
+                                                	<textarea name="remarks" class="remarks"></textarea>
+                                                    <div class="error" id=""></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -3968,29 +4177,29 @@ $(document).ready(function() {
         }
     });
     
-    $(".received_product_btn").click(function(){
-        if(confirm('Are you sure?'))
-        {
-            var ids = [];
-            var url = $(this).attr('data-href');
-            $(".is_received_checkbox:checked").each(function(){
-                ids.push($(this).val());
-            });
-            // alert(url+"/?ids="+ids.toString());
-            if (Array.isArray(ids) && ids.length) 
-            {
-                window.location.href = url+"/?ids="+ids.toString();
-            }
-            else
-            {
-                alert("Select product first.");
-            }
-        }
-        else
-        {
-            return false;
-        }
-    });
+    // $(".received_product_btn").click(function(){
+    //     if(confirm('Are you sure?'))
+    //     {
+    //         var ids = [];
+    //         var url = $(this).attr('data-href');
+    //         $(".is_received_checkbox:checked").each(function(){
+    //             ids.push($(this).val());
+    //         });
+    //         // alert(url+"/?ids="+ids.toString());
+    //         if (Array.isArray(ids) && ids.length) 
+    //         {
+    //             window.location.href = url+"/?ids="+ids.toString();
+    //         }
+    //         else
+    //         {
+    //             alert("Select product first.");
+    //         }
+    //     }
+    //     else
+    //     {
+    //         return false;
+    //     }
+    // });
 
     $(".print_btn, .download_btn").click(function(){
         var url = $(this).attr('data-href');
@@ -4027,7 +4236,7 @@ function get_dynamic_form(title,form,order_id)
 		$.ajax({
         type: 'GET',
         url: module_url+'/get_dynamic_form',
-        data: token_name+"="+token_hash+"&form="+form+"&order_id="+order_id,
+        data: token_name+"="+token_hash+"&form="+form+"&job_id="+order_id,
         success: function(dat) {
 
         	$('#dynamic_form_body').html(dat);
@@ -4077,43 +4286,36 @@ if(abg == 2 || abg == '')
 
 //==========ONCHANGE ABG YES/NO HIDE/SHOW DETAILS==============//
 
-//===========GET PRODUCT LIST FOR CONTRACT======//
-function get_products_list(order_id,source)
+function add_in_out()
 {	
-	// alert(module_url);
-	$('#product_source').val(source);
-	if(order_id != '')
-	{
-		$.ajax({
-        type: 'POST',
-        url: module_url+'/get_products_list',
-        data: token_name+"="+token_hash+"&order_id="+order_id+"&source="+source,
-        success: function(dat) {
-        	$('#contract_products').html(dat);
-        	$('#contract_products')[0].sumo.reload();
-        	$('.CaptionCont').css('opacity','1');
-        	$('.CaptionCont').css('width','145px');
-        	$('.optWrapper.multiple').css('width','165px');
-        	$('#contract_products_modal').modal("show");
-        }
-   		});
-	}
+	$('#in_out_modal').modal("show");
 }
 
-$('#contract_form').submit(function(){
-	var ids = $('#contract_products').val();
-	var source = $('#product_source').val();
-	var order_id = $('#order_id_contract').val();
-	if(source == 1)
-	{
-		var action_url = module_url+'/add_contract_india?order_id='+order_id+'&ids='+ids;
-	}
-	else
-	{
-		var action_url = module_url+'/add_contract_china?order_id='+order_id+'&ids='+ids;
-	}
-	$('#contract_form').attr('action',action_url);
-	$('#contract_form').submit();
+//==============freeze/unfreeze contract===========//
+$(".received_product_btn").click(function(){
+    if(confirm('Are you sure?'))
+    {
+        var ids 	= [];
+        var url 	= $(this).attr('data-href');
+        var action  = $(this).attr('data-action');
+        var action_url = "";
+        $(".record_checkbox:checked").each(function(){
+            ids.push($(this).val());
+        });
+        // alert(url+"/?ids="+ids.toString());
+        if (Array.isArray(ids) && ids.length) 
+        {
+            window.location.href = url+"/?ids="+ids.toString();
+        }
+        else
+        {
+            alert("Select Contract first.");
+        }
+    }
+    else
+    {
+        return false;
+    }
 });
-//===========GET PRODUCT LIST FOR CONTRACT======//
+//==============freeze/unfreeze contract===========//
 </script>

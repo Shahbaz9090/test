@@ -945,6 +945,17 @@ class Order_mod extends CI_Model {
             return ((int)$query->row()->sequence) + 1;
         }
         return false;
+    }
+
+    public function get_supplier_state($id)
+    {
+        $this->db->where('ed.id', $id)->where('state','1');//1 for haryana
+        $data = $this->db->get('supplier_ind as ed')->num_rows();
+        if($data)
+        {
+            return true;
+        }
+        return false;
     }  
 
 }

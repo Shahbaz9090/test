@@ -406,10 +406,10 @@ if(isset($is_modal_view) && $is_modal_view)
                                             $label_name     = $iterat_arr[$k]->options->label_name;
                                             $value_name     = $iterat_arr[$k]->options->value_name;
                                             $event_field    = $iterat_arr[$k]->options->event_field;
-                                            if($event_field=='department')
-                                            {
-                                                $event_field = $event_field.'[]';
-                                            }
+                                            // if($event_field=='department')
+                                            // {
+                                            //     $event_field = $event_field.'[]';
+                                            // }
                                             $condition_column   = $iterat_arr[$k]->options->condition_column;
                                             $dpen_ids           = $data_list[$event_field];
                                             $dpnd_data          = $iterat_arr[$k]->options->dpnd_data;
@@ -438,7 +438,7 @@ if(isset($is_modal_view) && $is_modal_view)
                                            
                                             <script type="text/javascript">
                                                 
-                                                $("select[name='<?=$event_field?>']").change(function()
+                                                $(".<?=$event_field?>").change(function()
                                                 {
                                                     var all_values = [];
                                                     $("select[name='<?=$event_field?>'] option:selected").each(function(){
@@ -447,6 +447,7 @@ if(isset($is_modal_view) && $is_modal_view)
                                                             all_values.push($(this).val());
                                                         }
                                                     });
+                                                    // alert();
                                                     // console.log(all_values);
                                                     /*console.log(all_values);
                                                     return false;*/
@@ -845,43 +846,43 @@ $(document).ready(function(){
             array_input_type.push(input_type);
             array_input_value.push(input_val);
         });
-         
-        $.ajax({
-            url:base_url+'/check_all_fields_unq',
-            type:"POST",
-            dataType:'json',
-            data: token_name+"="+token_hash+"&array_input_name="+array_input_name+"&array_input_type="+array_input_type+"&array_input_value="+array_input_value+"&action="+action+"&column_id="+column_id+"&module_id="+module_id,
-            success:function(res)
-            {
-                if(res.validation==1){
-                    error =true;
-                    var not_unique = res.data;
-                    for(var i=0;i<not_unique.length;i++){
-                        // console.log(not_unique[i].id);
-                        // console.log(not_unique[i].error);
-                        field_unq = not_unique[i].id;
-                        field_unq_error = not_unique[i].error;
+          form.submit();
+        // $.ajax({
+        //     url:base_url+'/check_all_fields_unq',
+        //     type:"POST",
+        //     dataType:'json',
+        //     data: token_name+"="+token_hash+"&array_input_name="+array_input_name+"&array_input_type="+array_input_type+"&array_input_value="+array_input_value+"&action="+action+"&column_id="+column_id+"&module_id="+module_id,
+        //     success:function(res)
+        //     {
+        //         if(res.validation==1){
+        //             error =true;
+        //             var not_unique = res.data;
+        //             for(var i=0;i<not_unique.length;i++){
+        //                 // console.log(not_unique[i].id);
+        //                 // console.log(not_unique[i].error);
+        //                 field_unq = not_unique[i].id;
+        //                 field_unq_error = not_unique[i].error;
                         
-                        $($("input.unique")).each(function(index,value){
-                            //alert(index); 
-                            // Using $() to re-wrap the element.
-                            //$(testimonials[i]).text('a');
-                            var field_name = count_data[index].name;
-                            if(field_name ==field_unq){
+        //                 $($("input.unique")).each(function(index,value){
+        //                     //alert(index); 
+        //                     // Using $() to re-wrap the element.
+        //                     //$(testimonials[i]).text('a');
+        //                     var field_name = count_data[index].name;
+        //                     if(field_name ==field_unq){
                                 
-                                $("input[name=" + field_name + "]").next().html( field_unq_error );
-                            } 
-                        });
-                    }
-                }else{
-                    error=false;
-                    $("div.error").html('');
-                    //alert(error);
-                    form.submit();
-                }
-                //return true;
-            }
-        });
+        //                         $("input[name=" + field_name + "]").next().html( field_unq_error );
+        //                     } 
+        //                 });
+        //             }
+        //         }else{
+        //             error=false;
+        //             $("div.error").html('');
+        //             //alert(error);
+        //             form.submit();
+        //         }
+        //         //return true;
+        //     }
+        // });
         // always return false
         //alert(error);
         if(error == true){

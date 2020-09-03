@@ -122,15 +122,22 @@ else
 									<input type="checkbox" name="allCheckbox" value="all" class="checkall">
 								</th>
 								<th>S.N</th>
-								<th>PO. No.</th>
-                                <th>Enq. No.</th>
-                                <th>ABG No.</th>
-								<th>ABG Amount</th>
-								<th>Date Of Delivery</th>
-								<th>Effective Date Of Delivery</th>
-								<th>Issue Dated</th>
-                                <th>Expiry Dated</th>
-								<th>Payment Terms</th>
+								<th>Inq. No.</th>
+                                <th>Client Name</th>
+                                <th>Type of Cards</th>
+								<th>No. of Cards</th>
+								<th>Inq Root</th>
+								<th>Profile</th>
+								<th>Source</th>
+                                <th>Status</th>
+								<th>Date</th>
+                                <th>Sales Lead</th>
+                                <th>Service Lead</th>
+                                <th>Estimation</th>
+                                <th>Offer Rev 1</th>
+                                <th>Offer Rev 2</th>
+                                <th>Offer Rev 3</th>
+                                <th>WO Received</th>
 								<th style="width: 60px;">Action</th>
 						  	</tr>
 						</thead>
@@ -146,21 +153,28 @@ else
 
 								<td ><?=$i++?></td>
                                 <?php if($edit){ ?>
-								<td style="text-align: left;"><a href="<?=$base_url.'/view/'.$row->form_id?>"><?=$row->po_no ?></a>
+								<td style="text-align: left;"><a href="<?=$base_url.'/view/'.$row->form_id?>"><?=$row->inquiry_no ?></a>
                                     <span class="chat-container"><i class="fa fa-comments-o fa-2x"></i><span class="chat-count"><?php echo isset($row->chat_count) && !empty($row->chat_count)?$row->chat_count:'0'?></span></span>
                                     
                                 </td>
                                 <?php }else{ ?>
-                                    <td style="text-align: left;"><?=$row->po_no ?></td>
+                                    <td style="text-align: left;"><?=$row->inquiry_no ?></td>
                                 <?php } ?>
-                                <td style="text-align: left;"><?=$row->enq_no ?></td>
-								<td style="text-align: left;"><?=$row->abg_no?></td>
-								<td style="text-align: left;"><?=$row->abg_amount?></td>
-								<td style="text-align: left;"><?php echo isset($row->delivery_date) && strtotime($row->delivery_date)?date('d/m/Y',strtotime($row->delivery_date)):'--/--/----' ?></td>
-								<td style="text-align: left;"><?php echo isset($row->effective_delivery_date) && strtotime($row->effective_delivery_date)?date('d/m/Y',strtotime($row->effective_delivery_date)):'--/--/----' ?></td>
-								<td style="text-align: left;"><?php echo isset($row->issue_date) && strtotime($row->issue_date)?date('d/m/Y',strtotime($row->issue_date)):'--/--/----' ?></td>
-								<td style="text-align: left;"><?php echo isset($row->expiry_date) && strtotime($row->expiry_date)?date('d/m/Y',strtotime($row->expiry_date)):'--/--/----' ?></td>
-                                <td style="text-align: left;"><?=isset($row->payment_terms) && !empty($row->payment_terms)?ucwords($row->payment_terms):'N/A'?></td>
+                                <td style="text-align: left;"><?=$row->client_name ?></td>
+								<td style="text-align: left;"><?=$row->card_type?></td>
+								<td style="text-align: left;"><?=$row->no_of_cards?></td>
+                                <td style="text-align: left;"><?php echo $row->enquiry_root==1?'Physical':($row->enquiry_root==2?'Mail':''); ?></td>
+								<td style="text-align: left;"><?php echo $row->profile==1?'Service':($row->profile==2?'R&D':''); ?></td>
+								<td style="text-align: left;"><?php echo $row->repairing_source==1?'Inhouse':($row->repairing_source==2?'Outside':$row->repairing_source==3?'In & Out':''); ?></td>
+								<td style="text-align: left;"><?php echo isset($row->issue_date) && strtotime($row->issue_date)?date('d/m/Y',strtotime($row->issue_date)):'---' ?></td>
+                                <td style="text-align: left;"><?php echo isset($row->issue_date) && strtotime($row->issue_date)?date('d/m/Y',strtotime($row->issue_date)):'---' ?></td>
+								<td style="text-align: left;"><?=ucwords($row->sales_lead_name)?></td>
+                                <td style="text-align: left;"><?=ucwords($row->service_lead_name)?></td>
+                                <td style="text-align: left;">---</td>
+                                <td style="text-align: left;">---</td>
+                                <td style="text-align: left;">---</td>
+                                <td style="text-align: left;">---</td>
+                                <td style="text-align: left;"><?php echo $row->wo_received==1?'Yes':'No';?></td>
 								<td>
                                     <?php if($view){ ?>
 			                        <a href="<?=$base_url.'/view/'.$row->form_id?>" class=""> <i class="fa fa-eye"></i> </a> 

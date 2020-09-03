@@ -1103,11 +1103,3 @@ if(!function_exists('usersByHierarchy')){
     }
 }
 
-/*function _countNotes($lead_id){
-	$CI=&get_instance();
-	$CI->db->select('id');
-	$CI->db->from('lead_notes');
-	$CI->db->where('lead_id',$lead_id);
-	$query = $CI->db->get();
-	return $query->num_rows();
-}*/

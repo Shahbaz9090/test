@@ -6817,6 +6817,24 @@ if (!function_exists('get_recruiter')) {
 
     }
 }
+
+if (!function_exists('get_shipment_company')) 
+{
+    function get_shipment_company()
+    {
+        $CI=&get_instance();
+        //$CI->db->where("status","1");
+        $CI->db->order_by("name","asc");
+        $CI->db->where('vendor_type','15');
+        $result = $CI->db->get("supplier_ind");
+        if ($result->num_rows > 0) {
+            return $result->result();
+        } else {
+            return false;
+        }
+    }
+}
+
 if (!function_exists('_is_dice_erooki_candidate')) 
 {
     function _is_dice_erooki_candidate($dice_id)
@@ -7672,6 +7690,23 @@ function get_industry_type_filters(){
         }
     }
     
+
+    if (!function_exists('get_contract_status')) {
+        function get_contract_status()
+        {
+            $CI = &get_instance();
+            $CI->db->select("*,name as unit_name");
+            $CI->db->where('status','1');
+            $CI->db->order_by("form_id","asc");
+            $result = $CI->db->get('inch_contract_status');
+            if ($result->num_rows > 0) {
+                return $result->result();
+            } else {
+                return false;
+            }
+        }
+    }
+    
     if (!function_exists('get_smtp_user')) {
 
         function get_smtp_user($type = 'sales_spares_email', $category = 1)
@@ -7694,4 +7729,110 @@ function get_industry_type_filters(){
         }
     }
 
+function connect_to_oc_db()
+{
+    $CI = &get_instance();
+    $CI->load->database();
+    $confignew['hostname'] = $CI->db->hostname;
+    $confignew['username'] = "root";
+    $confignew['password'] = "";
+    $confignew['database'] = 'procloud_incheco';
     
+    
+    // $confignew['username'] = DB_USERNAME;
+    // $confignew['password'] = DB_PASSWORD;
+    // $confignew['database'] = DB_DATABASE;
+    $confignew['dbdriver'] = $CI->db->dbdriver;
+    $confignew['dbprefix'] = $CI->db->dbprefix;
+    $confignew['pconnect'] = TRUE;
+    $confignew['db_debug'] = TRUE;
+    $confignew['cache_on'] = FALSE;
+    $confignew['cachedir'] = "";
+    $confignew['char_set'] = "utf8";
+    $confignew['dbcollat'] = "utf8_general_ci";
+    $confignew['swap_pre'] = '';
+    $confignew['autoinit'] = TRUE;
+    $confignew['stricton'] = FALSE;
+    return $confignew;  
+
+     //$this->db = $this->load->database($confignew,TRUE);
+}
+
+if (!function_exists('get_time_format')) {
+    function get_time_format($time)
+    {
+        $hours = 0;
+        $min   = 0;
+        $time = (int) $time;
+        if($time >= 60)
+        {
+            $hours = ($time - ($time%60))/60;
+            $min   = $time%60;
+        }
+        else
+        {
+            $min  = $time; 
+        }
+        if($hours <= 9)
+        {
+            $hours = "0".$hours;
+        }
+        if($min <= 9)
+        {
+            $min = "0".$min;
+        }
+        return $hours.":".$min;
+    }
+}
+
+
+if (!function_exists('get_offloading_act'))
+{
+    function get_offloading_act($job_id)
+    {
+        $CI = &get_instance();
+        $CI->db->select("contract_amount");
+        $CI->db->where('job_id',$job_id);
+        // $CI->db->order_by("form_id","asc");
+        $result = $CI->db->get('inch_job_contract');
+        if ($result->num_rows() > 0)
+        {
+           return $result->row()->contract_amount;
+        }
+        return 0;
+    }
+}
+
+if (!function_exists('get_delivery_box_details'))
+{
+    function get_delivery_box_details($challan_no,$service_id)
+    {
+        $CI = &get_instance();
+        $CI->db->select("*");
+        $CI->db->where('delivery_challan_no',$challan_no);
+        $CI->db->where('service_id',$service_id);
+        // $CI->db->order_by("form_id","asc");
+        $result = $CI->db->get('inch_service_delivery_box');
+        if ($result->num_rows() > 0)
+        {
+           $box_details =  $result->result();
+           foreach ($box_details as $key => $value)
+           {
+               $CI->db->select("b.card_name,concat(s.inquiry_no,'-',b.job_sequence) as job_name",FALSE);
+               $CI->db->where('b.delivery_challan_no',$challan_no);
+               $CI->db->where('b.service_id',$service_id);
+               $CI->db->where('b.box_id',$value->form_id)
+               ->join('inch_service as s','s.form_id=b.service_id','LEFT');;
+               // $CI->db->order_by("form_id","asc");
+               $cards = $CI->db->get('inch_job_card_details b');
+               if($cards->num_rows() > 0)
+               {
+                    $box_details[$key]->products = $cards->result();
+               }
+           }
+           // pr($box_details);die;
+           return $box_details;
+        }
+        return 0;
+    }
+}
